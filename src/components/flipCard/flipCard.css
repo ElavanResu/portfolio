@@ -1,0 +1,107 @@
+.flip-card {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  perspective: 100vw;
+}
+
+.flip-card .front, .flip-card .back {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: .6s;
+  background-size: cover;
+  background-position: center;
+  backface-visibility: hidden;
+  border-radius: 24px;
+}
+
+.flip-card .front .top-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 85%;
+  background: black;
+  opacity: 0.5;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-radius: 24px 24px 0px 0px;
+}
+
+.flip-card .front .bottom-label {
+  position: absolute;
+  top: 85%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: black;
+  opacity: 0.5;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-radius: 0px 0px 24px 24px;
+}
+
+.flip-card .back {
+  background: #7289D9;
+  transform: rotateY(180deg) scale(0.5);
+}
+
+.flip-card .back .cover {
+  background: black;
+  height: 100%;
+  border-radius: 24px;
+  opacity: 0.5;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.flip-card .back .cover .info-label {
+  border: 1px ;
+  height: 15px;
+  width: 40;
+  background-color: #2A2A2A;
+  display: flex;
+  align-items: 'center';
+  padding: 4px;
+  border-radius: 4px;
+  margin: 8px;
+}
+
+/* .flip-card .back .cover .button {
+  height:50px;
+  width:50px;
+  background:red;
+  margin-bottom:5px;
+} */
+
+/* .flip-card:hover .back .cover .button,
+.flip-card:focus-within .back .cover .button {
+  animation:bounce 0.2s 5;
+} */
+
+/* @keyframes bounce {
+  0%       { margin-bottom:5px; }
+  25%, 75% { margin-bottom:10px; }
+  50%      { margin-bottom:15px; }
+  100%     { margin-bottom:0; }
+} */
+
+.flip-card:hover .back,
+.flip-card:focus-within .back {
+  transform: rotateY(360deg) scale(1);
+  cursor: pointer;
+}
+
+.flip-card:hover .front,
+.flip-card:focus-within .front {
+  transform: rotateY(180deg) scale(0.5);
+  cursor: pointer;
+}
