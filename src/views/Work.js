@@ -15,9 +15,9 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     marginLeft: 0,
     marginRight: 0,
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("xs")]: {
       paddingLeft: theme.spacing(4),
-      paddingTop: theme.spacing(4)
+      paddingTop: theme.spacing(10)
       // paddingRight: theme.spacing(4)
     },
     paddingTop: theme.spacing(8)
@@ -42,10 +42,11 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexWrap: 'wrap',
     // maxWidth: theme.spacing(20),
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("xs")]: {
       paddingLeft: theme.spacing(4),
       paddingRight: theme.spacing(4)
     },
+    justifyContent: 'center',
     paddingTop: theme.spacing(8)
   },
   paper: {
@@ -82,7 +83,7 @@ const Work = (props) => {
       <div className={classes.flexContainer}>
         <FlipCard
           styles={{
-            margin: theme.spacing(1) 
+            margin: theme.spacing(2) 
           }}
           imgUrl={'https://i.imgur.com/9qRzZfs.jpg'}
           backImgUrl={'https://i.imgur.com/2esy9Az.jpg'}
@@ -93,7 +94,7 @@ const Work = (props) => {
         />
         <FlipCard
           styles={{
-            margin: theme.spacing(1) 
+            margin: theme.spacing(2) 
           }}
           imgUrl={'https://i.imgur.com/9qRzZfs.jpg'}
           backImgUrl={'https://i.imgur.com/2esy9Az.jpg'}

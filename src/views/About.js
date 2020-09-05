@@ -25,9 +25,10 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'left',
     marginLeft: 0,
     marginRight: 0,
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("xs")]: {
       paddingLeft: theme.spacing(4),
-      paddingRight: theme.spacing(4)
+      paddingRight: theme.spacing(4),
+      paddingTop: theme.spacing(10)
     },
     paddingLeft: theme.spacing(8),
     paddingRight: theme.spacing(0)

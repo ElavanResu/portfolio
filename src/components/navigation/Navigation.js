@@ -26,10 +26,13 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     minHeight: '100vh',
     width: `calc(100% - ${drawerWidth}px)`,
+    [theme.breakpoints.down("xs")]: {
+      width: `calc(100% - 0px)`
+    },
     flex: 1
   },
   drawer: {
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up("xs")]: {
       width: drawerWidth,
       flexShrink: 0
     }

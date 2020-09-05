@@ -44,7 +44,7 @@ const Home = (props) => {
   }
   return (
     <div className={classes.aboutDiv}>
-      <Container maxWidth='sm' id='homediv'>
+      <Container maxWidth='xs' id='homediv'>
         <Typography variant="h4">
           Namaste, my name is Shubham
         </Typography>
