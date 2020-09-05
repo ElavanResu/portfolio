@@ -1,23 +1,48 @@
 import React from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
+import Navigation from './components/navigation/Navigation'
 import './App.css';
+import Home from './views/Home'
+import About from './views/About'
+import Skills from './views/Skills'
+import Work from './views/Work'
+import Contact from './views/Contact'
 
 function App() {
+  const siderBarData = [
+    {
+      root: true,
+      routeName: 'home',
+      iconName: 'home',
+      component: Home
+    },
+    {
+      routeName: 'about',
+      iconName: 'about',
+      component: About
+    },
+    {
+      routeName: 'skills',
+      iconName: 'skills',
+      component: Skills
+    },
+    {
+      routeName: 'work',
+      iconName: 'work',
+      component: Work
+    },
+    {
+      routeName: 'contact',
+      iconName: 'contact',
+      component: Contact
+    }
+  ]
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Navigation
+          siderBarData={siderBarData}
+        />
       </header>
     </div>
   );
