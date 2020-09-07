@@ -179,7 +179,7 @@ const Contacts = (props) => {
           Contact me
         </Typography>
         <Typography variant="body2" className={classes.firstSentence}>
-          I am always open for new opportunities. If have any questions and want to talk with me, don't hesitate to contact me using the bellow form.
+          I am always open for new opportunities. If have any questions and want to talk with me, don't hesitate to contact me using the below form.
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>

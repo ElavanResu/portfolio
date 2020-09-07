@@ -2,16 +2,21 @@ import React from 'react'
 import Container from '@material-ui/core/Container';
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
+import Animation from './Animation'
 
 const useStyles = makeStyles((theme) => ({
-  aboutDiv: {
+  skillsDiv: {
+    display: 'flex',
+    // flexDirection: 'row',
+    flex: 1,
+    flexWrap: 'wrap'
+    // justifyContent: 'center'
+  },
+  leftRootContainer: {
+    textAlign: 'left',
+    justifyContent: 'center',
     display: 'flex',
     flexDirection: 'column',
-    flex: 1,
-    justifyContent: 'center'
-  },
-  rootContainer: {
-    textAlign: 'left',
     marginLeft: 0,
     marginRight: 0,
     [theme.breakpoints.down("xs")]: {
@@ -35,17 +40,23 @@ const useStyles = makeStyles((theme) => ({
   },
   secondaryColor: {
     color: '#3EFDD8'
+  },
+  rightContainer: {
+    display: 'flex',
+    flex: 1
   }
 }))
 
+let counter = -1
+
 const Skills = (props) => {
-  console.log('render skills')
   const classes = useStyles()
+  console.log('re render')
   return (
-    <div className={classes.aboutDiv}>
-      <Container maxWidth='xs' id='skilldiv'
+    <div id='skillDiv' className={classes.skillsDiv}>
+      <Container maxWidth='xs' id='skillContainer'
         classes={{
-          root: classes.rootContainer
+          root: classes.leftRootContainer
         }}
       >
         <Typography variant="h3" className={classes.title}>
@@ -64,6 +75,9 @@ const Skills = (props) => {
           Visit my <a className={classes.secondaryColor} href='https://www.linkedin.com/in/shubhamnavale' rel="noopener noreferrer" target="_blank">LikedIn</a> profile for more details. Or you can just <a className={classes.secondaryColor} href='http://localhost:3000/contact'>contact</a> me.
         </Typography>
       </Container>
+      <div className={classes.rightContainer}>
+        <Animation /> 
+      </div>
     </div>
   )
 }

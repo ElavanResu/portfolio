@@ -7,6 +7,7 @@ import About from './views/About'
 import Skills from './views/Skills'
 import Work from './views/Work'
 import Contact from './views/Contact'
+// import Animation from './views/Animation'
 
 function App() {
   const siderBarData = [
@@ -38,6 +39,7 @@ function App() {
     }
   ]
   return (
+    // <Animation />
     <div className="App">
       <header className="App-header">
         <Navigation
