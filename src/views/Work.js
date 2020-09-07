@@ -9,7 +9,10 @@ const useStyles = makeStyles((theme) => ({
   aboutDiv: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center'
+    alignItems: 'center',
+    [theme.breakpoints.down("xs")]: {
+      width: '100vw'
+    }
   },
   rootContainer: {
     textAlign: 'center',

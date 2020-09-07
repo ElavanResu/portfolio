@@ -3,7 +3,7 @@ import Container from '@material-ui/core/Container';
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Animation from './Animation'
-import './skill.css'
+import './views.css'
 
 const useStyles = makeStyles((theme) => ({
   skillsDiv: {
@@ -25,8 +25,9 @@ const useStyles = makeStyles((theme) => ({
       paddingLeft: theme.spacing(4),
       paddingRight: theme.spacing(4),
       paddingTop: theme.spacing(10),
-      minHeight: 400,
-      justifyContent: 'unset',
+      // minHeight: 400,
+      // justifyContent: 'unset',
+      marginBottom: theme.spacing(6)
     },
     paddingLeft: theme.spacing(8),
     paddingRight: theme.spacing(0)
@@ -84,7 +85,7 @@ const Skills = (props) => {
         </Typography>
       </Container>
       <div className={classes.rightContainer}>
-        <Animation /> 
+        <Animation animationText={'JS'}/> 
       </div>
     </div>
   )

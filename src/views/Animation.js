@@ -79,10 +79,11 @@ const Animation = (props) => {
     wh = canvas.height
     
     context.font = "bold "+(ww/2)+"px sans-serif";
+    // context.scale(-1, 1)
     context.textAlign = "center";
     context.textBaseline = 'middle';
-
-    context.fillText('JS', ww/2, wh/2);
+    // context.scale(-1, 1)
+    context.fillText(props.animationText, ww/2, wh/2);
 
 
     const data  = context.getImageData(0, 0, ww, wh).data;
@@ -91,8 +92,8 @@ const Animation = (props) => {
     context.globalCompositeOperation = "screen";
 
     const particles = []
-    for (let x = 0; x < ww; x+=Math.round(ww/100)) {
-      for (let y = 0; y < wh; y+=Math.round(ww/100)) {
+    for (let x = 0; x < ww; x+=Math.round(ww/90)) {
+      for (let y = 0; y < wh; y+=Math.round(ww/90)) {
         const particle = (x + y * ww) * 4
         if (data[particle + 3] > 200) {
           const dx = randomIntFromRange(-4, 4)
@@ -119,19 +120,17 @@ const Animation = (props) => {
       mouse.y = e.clientY - rect.top
     });
     window.addEventListener("resize", () => {
-      if (window.innerWidth < 600) {
+      if (window.innerWidth < 600 && viewRef.current !== null) {
         if (window.innerWidth !== windowWidth || window.innerHeight !== windowHeight) {
           console.log('resize')
-          if (viewRef.current !== null) {
-            const newParentDimentions = viewRef.current.getBoundingClientRect()
-            canvas.width = newParentDimentions.width
-            canvas.height = newParentDimentions.height
-            canvas.style.height='100%'
-            canvas.style.width='100%'
-            particles = init(context, canvas)
-          }
+          const newParentDimentions = viewRef.current.getBoundingClientRect()
+          canvas.width = newParentDimentions.width
+          canvas.height = newParentDimentions.height
+          canvas.style.height='100%'
+          canvas.style.width='100%'
+          particles = init(context, canvas)
         }
-      } else {
+      } else if (viewRef.current !== null) {
         console.log('resize')
         const newParentDimentions = viewRef.current.getBoundingClientRect()
         canvas.width = newParentDimentions.width

@@ -15,12 +15,15 @@ const useStyles = makeStyles((theme) => ({
     left: 'auto',
     right: 'auto'
   },
-  aboutDiv: {
+  homeDiv: {
     display: 'flex',
     flexDirection: 'column',
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    [theme.breakpoints.down("xs")]: {
+      width: '100vw'
+    }
   },
   knowMoreButton: {
     color: '#3EFDD8',
@@ -43,7 +46,7 @@ const Home = (props) => {
     history.push('/about')
   }
   return (
-    <div className={classes.aboutDiv}>
+    <div className={classes.homeDiv}>
       <Container maxWidth='xs' id='homediv'>
         <Typography variant="h4">
           Namaste, my name is Shubham

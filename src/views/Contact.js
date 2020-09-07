@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Container from '@material-ui/core/Container';
 import Typography from "@material-ui/core/Typography";
 import Grid from '@material-ui/core/Grid';
@@ -6,22 +6,34 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
 import { makeStyles, withStyles, ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import Animation from './Animation'
+import './views.css'
 
 const useStyles = makeStyles((theme) => ({
   contactDiv: {
     display: 'flex',
-    flexDirection: 'column',
+    overflowX: 'hidden',
+    // flexDirection: 'row',
     flex: 1,
-    justifyContent: 'center'
+    flexWrap: 'wrap',
+    [theme.breakpoints.down("xs")]: {
+      width: '100vw'
+    }
+    // justifyContent: 'center'
   },
-  rootContainer: {
+  leftRootContainer: {
     textAlign: 'left',
+    justifyContent: 'center',
+    display: 'flex',
+    flexDirection: 'column',
     marginLeft: 0,
     marginRight: 0,
     [theme.breakpoints.down("xs")]: {
       paddingLeft: theme.spacing(4),
       paddingRight: theme.spacing(4),
-      paddingTop: theme.spacing(10)
+      paddingTop: theme.spacing(10),
+      // minHeight: 400,
+      // justifyContent: 'unset',
     },
     paddingLeft: theme.spacing(8),
     paddingRight: theme.spacing(0)
@@ -30,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(4),
     color: '#3EFDD8'
   },
-  firstSentence: {
+  sentence: {
     color: '#949699',
   },
   snackbarText: {
@@ -72,6 +84,14 @@ const useStyles = makeStyles((theme) => ({
     '& .MuiSnackbarContent-root': {
       justifyContent: 'center'
     }
+  },
+  rightContainer: {
+    display: 'flex',
+    flex: 1,
+    [theme.breakpoints.down("sm")]: {
+      minWidth: 400,
+      // maxheight: 100
+    }
   }
 }))
 
@@ -93,7 +113,23 @@ const Contacts = (props) => {
   const [message, setMessage] = useState('')
   const [errors, setErrors] = useState([])
   const [openSnack, setOpenSnack] = useState(false)
+  const [showAnimation, setShowAnimation] = useState(true)
   const classes = useStyles()
+
+  useEffect(() => {
+    if (window.innerWidth < 700) {
+      setShowAnimation(false)
+    }
+  }, [])
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth < 700 && showAnimation) {
+      setShowAnimation(false)
+    } else if (window.innerWidth > 700 && !showAnimation) {
+      setShowAnimation(true)
+    }
+  })
+
   const handleInputChange = event => {
     event.preventDefault()
     const target = event.target;
@@ -172,13 +208,13 @@ const Contacts = (props) => {
     <div onSubmit={handleSubmit} className={classes.contactDiv}>
       <Container maxWidth='xs' id='aboutdiv'
         classes={{
-          root: classes.rootContainer
+          root: classes.leftRootContainer
         }}
       >
         <Typography variant="h3" className={classes.title}>
           Contact me
         </Typography>
-        <Typography variant="body2" className={classes.firstSentence}>
+        <Typography variant="body2" className={classes.sentence}>
           I am always open for new opportunities. If have any questions and want to talk with me, don't hesitate to contact me using the below form.
         </Typography>
         <form className={classes.form} noValidate>
@@ -256,6 +292,11 @@ const Contacts = (props) => {
           </ThemeProvider>
         </form>
       </Container>
+      {
+        showAnimation && <div id={'contactAnimationDiv'} className={classes.rightContainer}>
+          <Animation animationText={'📞'}/> 
+        </div>
+      }
       <Snackbar
         open={openSnack}
         classes={{
