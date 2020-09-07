@@ -3,10 +3,12 @@ import Container from '@material-ui/core/Container';
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Animation from './Animation'
+import './skill.css'
 
 const useStyles = makeStyles((theme) => ({
   skillsDiv: {
     display: 'flex',
+    overflowX: 'hidden',
     // flexDirection: 'row',
     flex: 1,
     flexWrap: 'wrap'
@@ -22,7 +24,9 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       paddingLeft: theme.spacing(4),
       paddingRight: theme.spacing(4),
-      paddingTop: theme.spacing(10)
+      paddingTop: theme.spacing(10),
+      minHeight: 400,
+      justifyContent: 'unset',
     },
     paddingLeft: theme.spacing(8),
     paddingRight: theme.spacing(0)
@@ -43,7 +47,11 @@ const useStyles = makeStyles((theme) => ({
   },
   rightContainer: {
     display: 'flex',
-    flex: 1
+    flex: 1,
+    [theme.breakpoints.down("sm")]: {
+      minWidth: 400,
+      // maxheight: 100
+    }
   }
 }))
 

@@ -19,6 +19,9 @@ const Animation = (props) => {
   let ww
   let wh
 
+  let windowWidth = window.innerWidth
+  let windowHeight = window.innerHeight
+
   function Particle (context, canvas, x, y, dx, dy, radius, color) {
     this.context = context
     this.x = Math.random() * canvas.width;
@@ -116,15 +119,27 @@ const Animation = (props) => {
       mouse.y = e.clientY - rect.top
     });
     window.addEventListener("resize", () => {
-      console.log('resize')
-      // const newParentDimentions = viewRef.current.getBoundingClientRect()
-      // console.log('width> ', test.width, test.height)
-      // console.log('parentDimentions.width:', newParentDimentions.width)
-      // console.log('parentDimentions.height', newParentDimentions.height)
-      // canvas.width = newParentDimentions.width
-      // canvas.height = newParentDimentions.height
-    
-      particles = init(context, canvas)
+      if (window.innerWidth < 600) {
+        if (window.innerWidth !== windowWidth || window.innerHeight !== windowHeight) {
+          console.log('resize')
+          if (viewRef.current !== null) {
+            const newParentDimentions = viewRef.current.getBoundingClientRect()
+            canvas.width = newParentDimentions.width
+            canvas.height = newParentDimentions.height
+            canvas.style.height='100%'
+            canvas.style.width='100%'
+            particles = init(context, canvas)
+          }
+        }
+      } else {
+        console.log('resize')
+        const newParentDimentions = viewRef.current.getBoundingClientRect()
+        canvas.width = newParentDimentions.width
+        canvas.height = newParentDimentions.height
+        canvas.style.height='100vh'
+        canvas.style.width='100%'
+        particles = init(context, canvas)
+      }
     });
     let animationFrameId
 
