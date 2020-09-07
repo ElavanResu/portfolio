@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flex: 1,
     [theme.breakpoints.down("sm")]: {
-      minWidth: 400,
+      minWidth: 250,
       // maxheight: 100
     }
   }

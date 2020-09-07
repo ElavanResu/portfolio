@@ -119,6 +119,13 @@ const Animation = (props) => {
       mouse.x = e.clientX - rect.left
       mouse.y = e.clientY - rect.top
     });
+    window.addEventListener("touchmove", (e) => {
+      if(e.touches.length > 0 ){
+        let rect = canvas.getBoundingClientRect();
+        mouse.x = e.touches[0].clientX  - rect.left;
+        mouse.y = e.touches[0].clientY  - rect.top;
+      }
+    });
     window.addEventListener("resize", () => {
       if (window.innerWidth < 600 && viewRef.current !== null) {
         if (window.innerWidth !== windowWidth || window.innerHeight !== windowHeight) {
