@@ -6,6 +6,7 @@ import Animation from './Animation'
 
 const useStyles = makeStyles((theme) => ({
   aboutDiv: {
+    // position: 'relative',
     display: 'flex',
     overflowX: 'hidden',
     // flexDirection: 'row',
@@ -62,7 +63,7 @@ const About = (props) => {
   console.log('render about')
   const classes = useStyles()
   return (
-    <div className={classes.aboutDiv}>
+    <div id='aboutDiv' className={classes.aboutDiv}>
       <Container maxWidth='xs' id='aboutdiv'
         classes={{
           root: classes.leftRootContainer

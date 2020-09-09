@@ -11,14 +11,8 @@ import Animation from './Animation'
 const useStyles = makeStyles((theme) => ({
   contactDiv: {
     display: 'flex',
-    overflowX: 'hidden',
-    // flexDirection: 'row',
+    overflow: 'hidden',
     flex: 1,
-    // flexWrap: 'wrap',
-    // [theme.breakpoints.down('sm')]: {
-    //   width: '100vw'
-    // }
-    // justifyContent: 'center'
   },
   leftRootContainer: {
     textAlign: 'left',
@@ -31,8 +25,6 @@ const useStyles = makeStyles((theme) => ({
       paddingLeft: theme.spacing(2),
       paddingRight: theme.spacing(2),
       paddingTop: theme.spacing(10),
-      // minHeight: 400,
-      // justifyContent: 'unset',
     },
     display: 'flex',
     flexDirection: 'column',
@@ -84,10 +76,6 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   submitButtonDiv: {
-    [theme.breakpoints.down('xs')]: {
-      position: 'absolute',
-      bottom: 0
-    },
     marginTop: theme.spacing(6),
     marginBottom: theme.spacing(2)
   },
@@ -106,6 +94,9 @@ const useStyles = makeStyles((theme) => ({
   },
   clearButton: {
     marginRight: theme.spacing(1)
+  },
+  griDivContainer: {
+    flex: 1
   }
 }))
 
@@ -253,7 +244,7 @@ const Contacts = (props) => {
   // )
   console.log('rerender')
   return (
-    <div onSubmit={handleSubmit} className={classes.contactDiv}>
+    <div id='contactDiv' onSubmit={handleSubmit} className={classes.contactDiv}>
       <Container maxWidth='xs' id='aboutdiv'
         classes={{
           root: classes.leftRootContainer
@@ -266,68 +257,70 @@ const Contacts = (props) => {
           I am always open for new opportunities. If have any questions and want to talk with me, don't hesitate to contact me using the below form.
         </Typography>
         <form className={classes.form} noValidate>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                classes={{
-                  root: classes.textFieldRoot
-                }}
-                // autoComplete='name'
-                name='name'
-                fullWidth
-                id='name'
-                label='Name'
-                onChange={handleInputChange}
-                value={name}
-              />
+          <div id='gridContainerDiv' className={classes.griDivContainer}>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  classes={{
+                    root: classes.textFieldRoot
+                  }}
+                  // autoComplete='name'
+                  name='name'
+                  fullWidth
+                  id='name'
+                  label='Name'
+                  onChange={handleInputChange}
+                  value={name}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  classes={{
+                    root: classes.textFieldRoot
+                  }}
+                  // autoComplete='email'
+                  name='email'
+                  required
+                  error={errors.findIndex(ele => ele.key === 'email') !== -1}
+                  fullWidth
+                  id='email'
+                  label='Email'
+                  onChange={handleInputChange}
+                  value={email}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  classes={{
+                    root: classes.textFieldRoot
+                  }}
+                  // autoComplete='email'
+                  name='subject'
+                  fullWidth
+                  id='subject'
+                  label='Subject'
+                  onChange={handleInputChange}
+                  value={subject}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  classes={{
+                    root: classes.textFieldRoot
+                  }}
+                  // autoComplete='email'
+                  name='message'
+                  required
+                  error={errors.findIndex(ele => ele.key === 'message') !== -1}
+                  fullWidth
+                  id='message'
+                  label='Message'
+                  onChange={handleInputChange}
+                  value={message}
+                />
+              </Grid>
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                classes={{
-                  root: classes.textFieldRoot
-                }}
-                // autoComplete='email'
-                name='email'
-                required
-                error={errors.findIndex(ele => ele.key === 'email') !== -1}
-                fullWidth
-                id='email'
-                label='Email'
-                onChange={handleInputChange}
-                value={email}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                classes={{
-                  root: classes.textFieldRoot
-                }}
-                // autoComplete='email'
-                name='subject'
-                fullWidth
-                id='subject'
-                label='Subject'
-                onChange={handleInputChange}
-                value={subject}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                classes={{
-                  root: classes.textFieldRoot
-                }}
-                // autoComplete='email'
-                name='message'
-                required
-                error={errors.findIndex(ele => ele.key === 'message') !== -1}
-                fullWidth
-                id='message'
-                label='Message'
-                onChange={handleInputChange}
-                value={message}
-              />
-            </Grid>
-          </Grid>
+          </div>
           <div id='submitButtonDiv' className={classes.submitButtonDiv}>
             <ThemeProvider theme={theme}>
               <Button

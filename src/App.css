@@ -1,14 +1,14 @@
 .App-header {
   background-color: #1D1D1D;
   text-align: center;
-  /* min-height: 100vh; */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   /* font-size: calc(10px + 2vmin); */
   color: white;
-  width: 100vw;
-  height: 100vh;
+  /* width: 100vw; */
+  /* height: 100vh; */
 }
 
 #lodingDiv {
@@ -34,7 +34,7 @@
 
 #drawerMenuWeb div {
   left: -60px; 
-  animation: slide-menu-bar 0.7s ease 0.5s 1;
+  animation: slide-menu-bar 0.7s ease 0s 1;
   animation-fill-mode: forwards;
 }
 
@@ -44,5 +44,40 @@
   }
   100% {
     left: 0; 
+  }
+}
+
+#homeDiv {
+  overflow: hidden;
+  /* height: 100vh; */
+  margin-top: -200vh;
+  animation: slide-home-content 0.7s ease 0s 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slide-home-content {
+  0% {
+    margin-top: -200vh;
+  }
+  100% {
+    margin-top: 0;
+  }
+}
+
+#knowMoreButtonDiv {
+  bottom: -80px;
+  animation: slide-home-know-more-button 0.75s ease 0s 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slide-home-know-more-button {
+  0% {
+    bottom: -80px;
+  }
+  5% {
+    bottom: -50px;
+  }
+  100% {
+    bottom: 80px;
   }
 }

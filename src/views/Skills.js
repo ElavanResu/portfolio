@@ -61,7 +61,7 @@ const Skills = (props) => {
   const classes = useStyles()
   console.log('re render')
   return (
-    <div id='skillDiv' className={classes.skillsDiv}>
+    <div id='skillsDiv' className={classes.skillsDiv}>
       <Container maxWidth='xs' id='skillContainer'
         classes={{
           root: classes.leftRootContainer

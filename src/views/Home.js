@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   },
   knowMoreButtonDiv: {
     position: 'absolute',
-    bottom: theme.spacing(10),
+    bottom: theme.spacing(-10),
     left: 'auto',
     right: 'auto'
   },
@@ -46,7 +46,7 @@ const Home = (props) => {
     history.push('/about')
   }
   return (
-    <div className={classes.homeDiv}>
+    <div id='homeDiv' className={classes.homeDiv}>
       <Container maxWidth='xs' id='homediv'>
         <Typography variant='h4'>
           Namaste, my name is Shubham
@@ -55,7 +55,7 @@ const Home = (props) => {
           I am a frontend and backend developer, who loves to create awesome web apps and android apps using react, react native and node
         </Typography>
       </Container>
-      <div className={classes.knowMoreButtonDiv}>
+      <div id='knowMoreButtonDiv' className={classes.knowMoreButtonDiv}>
         <ThemeProvider theme={theme}>
           <Button variant='outlined' color={'secondary'} onClick={onKnowMore}>
             KNOW MORE
