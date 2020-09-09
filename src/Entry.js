@@ -13,7 +13,7 @@ const Entry = (props) => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false)
-    }, 1500)
+    }, 2200)
   }, [])
   const siderBarData = [
     {
@@ -45,10 +45,12 @@ const Entry = (props) => {
   ]
   if (loading) {
     return (
+    <div id='lodingDiv'>
       <Loading
         colors={['#949699', '#3EFDD8']}
         backgroundColor={'#1d1d1d0d'}
       />
+    </div>
     )
   }
   return (
