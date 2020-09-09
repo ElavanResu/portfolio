@@ -34,7 +34,7 @@
 
 #drawerMenuWeb div {
   left: -60px; 
-  animation: slide-menu-bar 0.65s ease 0s 1;
+  animation: slide-menu-bar 0.7s ease 0.5s 1;
   animation-fill-mode: forwards;
 }
 

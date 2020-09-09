@@ -103,6 +103,9 @@ const useStyles = makeStyles((theme) => ({
       minWidth: 250,
       // maxheight: 100
     }
+  },
+  clearButton: {
+    marginRight: theme.spacing(1)
   }
 }))
 
@@ -140,6 +143,15 @@ const Contacts = (props) => {
       setShowAnimation(true)
     }
   })
+
+  const onClear = event => {
+    console.log('resey')
+    setName('')
+    setEmail('')
+    setSubject('')
+    setMessage('')
+    setErrors([])
+  }
 
   const handleInputChange = event => {
     event.preventDefault()
@@ -239,6 +251,7 @@ const Contacts = (props) => {
   //     >div2</div>
   //   </div>
   // )
+  console.log('rerender')
   return (
     <div onSubmit={handleSubmit} className={classes.contactDiv}>
       <Container maxWidth='xs' id='aboutdiv'
@@ -265,7 +278,7 @@ const Contacts = (props) => {
                 id='name'
                 label='Name'
                 onChange={handleInputChange}
-                value={name.value}
+                value={name}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -281,7 +294,7 @@ const Contacts = (props) => {
                 id='email'
                 label='Email'
                 onChange={handleInputChange}
-                value={email.value}
+                value={email}
               />
             </Grid>
             <Grid item xs={12}>
@@ -295,7 +308,7 @@ const Contacts = (props) => {
                 id='subject'
                 label='Subject'
                 onChange={handleInputChange}
-                value={subject.value}
+                value={subject}
               />
             </Grid>
             <Grid item xs={12}>
@@ -311,17 +324,24 @@ const Contacts = (props) => {
                 id='message'
                 label='Message'
                 onChange={handleInputChange}
-                value={message.value}
+                value={message}
               />
             </Grid>
           </Grid>
           <div id='submitButtonDiv' className={classes.submitButtonDiv}>
             <ThemeProvider theme={theme}>
               <Button
+                variant='outlined'
+                color='secondary'
+                className={classes.clearButton}
+                onClick={onClear}
+              >
+                Clear
+              </Button>
+              <Button
                 type='submit'
                 variant='contained'
                 color='primary'
-                className={classes.submit}
               >
                 Dispatch
               </Button>
