@@ -23,19 +23,19 @@ const useStyles = makeStyles((theme) => ({
   leftRootContainer: {
     textAlign: 'left',
     [theme.breakpoints.up('sm')]: {
-      justifyContent: 'center',
-      display: 'flex',
-      flexDirection: 'column'
+      justifyContent: 'center'
     },
     marginLeft: 0,
     marginRight: 0,
     [theme.breakpoints.down('xs')]: {
-      paddingLeft: theme.spacing(4),
-      paddingRight: theme.spacing(4),
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(2),
       paddingTop: theme.spacing(10),
       // minHeight: 400,
       // justifyContent: 'unset',
     },
+    display: 'flex',
+    flexDirection: 'column',
     paddingLeft: theme.spacing(8),
     paddingRight: theme.spacing(0)
   },
@@ -51,7 +51,12 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center'
   },
   form: {
-    marginTop: theme.spacing(3)
+    marginTop: theme.spacing(3),
+    [theme.breakpoints.down('xs')]: {
+      flex: 1,
+      display: 'flex',
+      flexDirection: 'column'
+    }
   },
   textFieldRoot: {
     '& .MuiInputBase-root': {
@@ -78,8 +83,13 @@ const useStyles = makeStyles((theme) => ({
       color: '#949699'
     }
   },
-  submit: {
-    marginTop: theme.spacing(3)
+  submitButtonDiv: {
+    [theme.breakpoints.down('xs')]: {
+      position: 'absolute',
+      bottom: 0
+    },
+    marginTop: theme.spacing(6),
+    marginBottom: theme.spacing(2)
   },
   snackbarRoot: {
     '& .MuiSnackbarContent-root': {
@@ -205,6 +215,30 @@ const Contacts = (props) => {
       })
     }
   }
+  // return (
+  //   <div onSubmit={handleSubmit} className={classes.contactDiv}>
+  //     <div
+  //       id='div1'
+  //       style={{
+  //         display: 'flex',
+  //         flex: 1,
+  //         flexDirection: 'column'
+  //       }}>
+  //         <div id='div1'>div1</div>
+  //         <div id='div2'>div2</div>
+  //         <div id='div3'>div3</div>
+  //         <div style={{ position: 'absolute', bottom: '16px'}}id='div4'>div4</div>
+
+  //       </div>
+  //     <div
+  //       style={{
+  //         display: 'flex',
+  //         flex: 1
+  //       }}
+  //       id='div2'
+  //     >div2</div>
+  //   </div>
+  // )
   return (
     <div onSubmit={handleSubmit} className={classes.contactDiv}>
       <Container maxWidth='xs' id='aboutdiv'
@@ -281,16 +315,18 @@ const Contacts = (props) => {
               />
             </Grid>
           </Grid>
-          <ThemeProvider theme={theme}>
-            <Button
-              type='submit'
-              variant='contained'
-              color='primary'
-              className={classes.submit}
-            >
-              Dispatch
-            </Button>
-          </ThemeProvider>
+          <div id='submitButtonDiv' className={classes.submitButtonDiv}>
+            <ThemeProvider theme={theme}>
+              <Button
+                type='submit'
+                variant='contained'
+                color='primary'
+                className={classes.submit}
+              >
+                Dispatch
+              </Button>
+            </ThemeProvider>
+          </div>
         </form>
       </Container>
       {

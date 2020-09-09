@@ -23,8 +23,8 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 0,
     marginRight: 0,
     [theme.breakpoints.down('xs')]: {
-      paddingLeft: theme.spacing(4),
-      paddingRight: theme.spacing(4),
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(2),
       paddingTop: theme.spacing(10),
       // minHeight: 400,
       // justifyContent: 'unset',
