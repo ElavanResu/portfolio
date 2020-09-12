@@ -9,15 +9,18 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 // import ListItemIcon from "@material-ui/core/ListItemIcon";
 import { makeStyles } from "@material-ui/core/styles";
+import Logo from '../logo'
 
 const useStyles = makeStyles((theme) => ({
   // toolbar: theme.mixins.toolbar,
   inactiveIcons: {
     color: '#949699'
   },
-  toolbar: {
+  logoContainer: {
     ...theme.mixins.toolbar,
-    color: 'white'
+    color: 'white',
+    height: 56,
+    width: 56
   },
   activeIcon: {
     color: '#3EFDD8'
@@ -46,9 +49,9 @@ const SideNav = (props) => {
   const classes = useStyles()
   return (
     <div className={classes.toolbar}>
-      {showLogo && <div className={classes.toolbar}>My Logo</div>}
+      {showLogo && <div className={classes.logoContainer}><Logo /></div>}
       {/* <Divider /> */}
-      <List>
+      <List id={'navBarListContainer'}>
         {siderBarData.map((ele, index) => {
           const IconType = IconMapper[ele.iconName]
           return (

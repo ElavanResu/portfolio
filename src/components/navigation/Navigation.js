@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 // import CssBaseline from "@material-ui/core/CssBaseline";
 // import Divider from "@material-ui/core/Divider";
-import Drawer from "@material-ui/core/Drawer";
 import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
 // import InboxIcon from "@material-ui/icons/MoveToInbox";
@@ -14,11 +13,13 @@ import Toolbar from "@material-ui/core/Toolbar";
 // import Typography from "@material-ui/core/Typography";
 import { makeStyles, createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import SideNav from './SideNav'
+import Logo from '../logo'
+
+import NavBar from './NavBar'
 
 let customTheme = createMuiTheme()
 
-const drawerWidth = 60;
+const drawerWidth = 56;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,40 +27,33 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     minHeight: '100vh',
     width: `calc(100% - ${drawerWidth}px)`,
+    [theme.breakpoints.down("xs")]: {
+      width: `calc(100% - 0px)`
+    },
     flex: 1
-  },
-  drawer: {
-    [theme.breakpoints.up("sm")]: {
-      width: drawerWidth,
-      flexShrink: 0
-    }
   },
   appBar: {
     backgroundColor: '#181818'
     // width: `calc(100% - ${drawerWidth}px)`,
     //   marginLeft: drawerWidth
   },
+  toolbar: {
+    ...theme.mixins.toolbar,
+    [theme.breakpoints.down('sm')]: {
+      paddingLeft: 0
+    }
+  },
   menuButton: {
     // marginRight: theme.spacing(2),
     [theme.breakpoints.up("sm")]: {
       display: "none"
+    },
+    [theme.breakpoints.down('sm')]: {
+      flexGrow: 1,
+      justifyContent: 'flex-end'
     }
   },
   // necessary for content to be below app bar
-  toolbar: theme.mixins.toolbar,
-  drawerPaper: {
-    backgroundColor: '#181818',
-    width: drawerWidth,
-    overflowX: 'hidden',
-    '&::-webkit-scrollbar': {
-      display: 'none',
-    },
-    '-ms-overflow-style': 'none',  /* IE and Edge */
-    scrollbarWidth: 'none'
-  },
-  paperAnchorDockedLeft: {
-    borderRight: 'unset'
-  },
   icons: {
     color: '#949699'
   },
@@ -72,13 +66,13 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(3)
   },
   title: {
-    flexGrow: 1,
-    textAlign: 'left'
+    height: 56,
+    width: 56
   }
 }));
 
 function ResponsiveDrawer(props) {
-  const { window, siderBarData } = props;
+  const { siderBarData } = props;
   const classes = useStyles();
   // const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -87,17 +81,14 @@ function ResponsiveDrawer(props) {
     setMobileOpen(!mobileOpen);
   };
 
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
-
   return (
     <Router>
-      <div className={classes.root}>
+      <div id='navigationRootDiv' className={classes.root}>
         {/* <CssBaseline /> */}
         <Hidden smUp implementation="css">
           <AppBar position="fixed" className={classes.appBar}>
-            <Toolbar>
-              <div className={classes.title}>My Logo</div>
+            <Toolbar className={classes.toolbar}>
+              <div className={classes.title}><Logo /></div>
               <IconButton
                 color="inherit"
                 aria-label="open drawer"
@@ -110,45 +101,12 @@ function ResponsiveDrawer(props) {
             </Toolbar>
           </AppBar>
         </Hidden>
-        <nav className={classes.drawer} aria-label="mailbox folders">
-          {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-          <Hidden smUp implementation="css">
-            <Drawer
-              container={container}
-              variant="temporary"
-              anchor={'right'}
-              open={mobileOpen}
-              onClose={handleDrawerToggle}
-              classes={{
-                paper: classes.drawerPaper
-              }}
-              ModalProps={{
-                keepMounted: true // Better open performance on mobile.
-              }}
-            >
-              <SideNav
-                handleDrawerToggle={handleDrawerToggle}
-                siderBarData={siderBarData}
-              />
-            </Drawer>
-          </Hidden>
-          <Hidden xsDown implementation="css">
-            <Drawer
-              classes={{
-                paper: classes.drawerPaper,
-                paperAnchorDockedLeft: classes.paperAnchorDockedLeft
-              }}
-              variant="permanent"
-              open
-            >
-              <SideNav
-                showLogo
-                // handleDrawerToggle={handleDrawerToggle}
-                siderBarData={siderBarData}
-              />
-            </Drawer>
-          </Hidden>
-        </nav>
+        <NavBar
+          handleDrawerToggle={handleDrawerToggle}
+          mobileOpen={mobileOpen}
+          siderBarData={siderBarData}
+          drawerWidth={drawerWidth}
+        />
         <Switch>
           {
             siderBarData.map(ele => {
@@ -167,13 +125,5 @@ function ResponsiveDrawer(props) {
     </Router>
   );
 }
-
-ResponsiveDrawer.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window: PropTypes.func
-};
 
 export default ResponsiveDrawer;
