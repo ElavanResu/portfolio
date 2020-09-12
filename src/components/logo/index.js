@@ -1,11 +1,9 @@
 import React from 'react'
 
-const logo =(props) => {
+const Logo =(props) => {
   return (
-    <div>
-      S
-    </div>
+    <img src="/logo56.png" alt="image" />
   )
 }
 
-export default logo
+export default Logo

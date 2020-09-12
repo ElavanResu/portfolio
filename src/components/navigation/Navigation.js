@@ -13,6 +13,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 // import Typography from "@material-ui/core/Typography";
 import { makeStyles, createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Logo from '../logo'
 
 import NavBar from './NavBar'
 
@@ -87,7 +88,7 @@ function ResponsiveDrawer(props) {
         <Hidden smUp implementation="css">
           <AppBar position="fixed" className={classes.appBar}>
             <Toolbar className={classes.toolbar}>
-              <div className={classes.title}>My Logo</div>
+              <div className={classes.title}><Logo /></div>
               <IconButton
                 color="inherit"
                 aria-label="open drawer"

@@ -9,6 +9,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 // import ListItemIcon from "@material-ui/core/ListItemIcon";
 import { makeStyles } from "@material-ui/core/styles";
+import Logo from '../logo'
 
 const useStyles = makeStyles((theme) => ({
   // toolbar: theme.mixins.toolbar,
@@ -48,7 +49,7 @@ const SideNav = (props) => {
   const classes = useStyles()
   return (
     <div className={classes.toolbar}>
-      {showLogo && <div className={classes.logoContainer}>My Logo</div>}
+      {showLogo && <div className={classes.logoContainer}><Logo /></div>}
       {/* <Divider /> */}
       <List id={'navBarListContainer'}>
         {siderBarData.map((ele, index) => {
