@@ -4,16 +4,18 @@ import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/sty
 import Container from '@material-ui/core/Container'
 import Button from '@material-ui/core/Button'
 import { useHistory } from 'react-router-dom'
+import NeonButton from '../components/NeonButton'
 
 const useStyles = makeStyles((theme) => ({
   subtitle: {
     color: '#949699'
   },
   knowMoreButtonDiv: {
-    position: 'absolute',
-    bottom: theme.spacing(-10),
-    left: 'auto',
-    right: 'auto'
+    transform: 'translateY(100%)'
+    // position: 'absolute',
+    // bottom: theme.spacing(-10),
+    // left: 'auto',
+    // right: 'auto'
   },
   homeDiv: {
     display: 'flex',
@@ -47,7 +49,7 @@ const Home = (props) => {
   }
   return (
     <div id='homeDiv' className={classes.homeDiv}>
-      <Container maxWidth='xs' id='homediv'>
+      <Container maxWidth='xs' id='introductionContainer'>
         <Typography variant='h4'>
           Namaste, my name is Shubham
         </Typography>
@@ -56,11 +58,11 @@ const Home = (props) => {
         </Typography>
       </Container>
       <div id='knowMoreButtonDiv' className={classes.knowMoreButtonDiv}>
-        <ThemeProvider theme={theme}>
-          <Button variant='outlined' color={'secondary'} onClick={onKnowMore}>
-            KNOW MORE
-          </Button>
-        </ThemeProvider>
+        <NeonButton
+          text='KNOW MORE'
+          color='#3EFDD8'
+          onClick={onKnowMore}
+        />
       </div>
     </div>
   )

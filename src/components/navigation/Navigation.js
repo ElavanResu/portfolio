@@ -18,7 +18,7 @@ import NavBar from './NavBar'
 
 let customTheme = createMuiTheme()
 
-const drawerWidth = 60;
+const drawerWidth = 56;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,14 +36,23 @@ const useStyles = makeStyles((theme) => ({
     // width: `calc(100% - ${drawerWidth}px)`,
     //   marginLeft: drawerWidth
   },
+  toolbar: {
+    ...theme.mixins.toolbar,
+    [theme.breakpoints.down('sm')]: {
+      paddingLeft: 0
+    }
+  },
   menuButton: {
     // marginRight: theme.spacing(2),
     [theme.breakpoints.up("sm")]: {
       display: "none"
+    },
+    [theme.breakpoints.down('sm')]: {
+      flexGrow: 1,
+      justifyContent: 'flex-end'
     }
   },
   // necessary for content to be below app bar
-  toolbar: theme.mixins.toolbar,
   icons: {
     color: '#949699'
   },
@@ -56,8 +65,8 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(3)
   },
   title: {
-    flexGrow: 1,
-    textAlign: 'left'
+    height: 56,
+    width: 56
   }
 }));
 
@@ -77,7 +86,7 @@ function ResponsiveDrawer(props) {
         {/* <CssBaseline /> */}
         <Hidden smUp implementation="css">
           <AppBar position="fixed" className={classes.appBar}>
-            <Toolbar>
+            <Toolbar className={classes.toolbar}>
               <div className={classes.title}>My Logo</div>
               <IconButton
                 color="inherit"
