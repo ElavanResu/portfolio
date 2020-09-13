@@ -38,15 +38,25 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        
+        opacity: 0;
+        animation: first-content-load-text 1.5s ease 2s 1 forwards;
+      }
+
+      @keyframes first-content-load-text {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
       }
       #firstContentText {
         position: relative;
         color: #3EFDD8;
         font-size: 2em;
         font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        animation: first-content-loading 1.5s ease 0s infinite alternate;
-        text-shadow: 0 0 0px #3EFDD8;
+        animation: first-content-loading 1.5s ease 3.5s infinite alternate;
+        text-shadow: 0 0 0px #1D1D1D;
         padding: 10px 30px;
         letter-spacing: 4px;
         text-decoration: none;
@@ -71,7 +81,7 @@
         z-index: -2;
         opacity: .3;
         filter: blur(0px);
-        animation: first-content-loading-text 1.5s ease 0s infinite alternate;
+        animation: first-content-loading-text 1.5s ease 3.5s infinite alternate;
       }
 
       @keyframes first-content-loading-text {
@@ -114,7 +124,7 @@
   <body>
     <div id="root">
       <div id="firstContent">
-        <span id="firstContentText" data-text='Loading'>Loading</span>
+        <span id="firstContentText" class='firstContentTextIntialCondition' data-text='Loading'>Loading</span>
       </div>
     </div>
     <script>
