@@ -29,9 +29,109 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Shubham Navale | Front End & Back End Developer</title>
+    <style type="text/css">
+      body {
+        background-color: #1D1D1D;
+      }
+      #firstContent {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+      }
+      #firstContentText {
+        position: relative;
+        color: #3EFDD8;
+        font-size: 2em;
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        animation: first-content-loading 1.5s ease 0s infinite alternate;
+        text-shadow: 0 0 0px #3EFDD8;
+        padding: 10px 30px;
+        letter-spacing: 4px;
+        text-decoration: none;
+      }
+      @keyframes first-content-loading {
+        0% {
+          text-shadow: 0 0 0px #3EFDD8;
+        }
+        100% {
+          text-shadow: 0 0 2px #3EFDD8;
+        }
+      }
+
+      #firstContentText:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 0%;
+        width: 0%;
+        background: #05ffcd;
+        z-index: -2;
+        opacity: .3;
+        filter: blur(0px);
+        animation: first-content-loading-text 1.5s ease 0s infinite alternate;
+      }
+
+      @keyframes first-content-loading-text {
+        0% {
+          filter: blur(0px);
+          height: 0%;
+          width: 0%;
+          top: 50%;
+          left: 50%;
+        }
+        100% {
+          filter: blur(40px);
+          height: 100%;
+          width: 100%;
+          top: 0;
+          left: 0;
+        }
+      }
+      #firstContentText:after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 10px 30px;
+        z-index: -1;
+        color: #1D1D1D;
+        animation: text-shadow-visible 1.5s ease 0s 1 infinite alternate;
+      }
+
+      @keyframes text-shadow-visible {
+        0% {
+          color: #1D1D1D;
+        }
+        100% {
+          color: #3EFDD8;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div id="firstContent">
+        <span id="firstContentText" data-text='Loading'>Loading</span>
+      </div>
+    </div>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('worker.js').then(function (registration) {
+            console.log('Worker registration successful', registration.scope)
+          }, function (error) {
+            console.log('Worker registration failed', err)
+          }).catch(function (error) {
+            console.log(err)
+          })
+        })
+      } else {
+        console.log('Service worker is not supported by the browser. Sed')
+      }
+    </script>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
