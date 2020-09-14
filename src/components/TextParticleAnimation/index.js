@@ -173,7 +173,7 @@ const Animation = (props) => {
   />
 
   return (
-    <div resize='true' ref={viewRef} id={'viewDiv'} style={{ display: 'flex', flex: 1 }}>
+    <div ref={viewRef} id={'viewDiv'} style={{ display: 'flex', flex: 1}}>
       {canvas}
     </div>
   )

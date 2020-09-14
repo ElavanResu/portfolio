@@ -5,6 +5,8 @@ const urlsToCache = [
   '/about',
   '/skills',
   '/work',
+  '/work/e-bot',
+  '/work/expense-tracker',
   '/contact'  
 ];
 

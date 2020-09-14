@@ -2,29 +2,16 @@ import React, { useState, useEffect } from 'react'
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
-import Paper from '@material-ui/core/Paper'
-import FlipCard from '../components/flipCard'
-import Animation from './Animation'
+import FlipCard from '../../components/FlipCard'
+import TextParticleAnimation from '../../components/TextParticleAnimation'
+import { Link, useRouteMatch } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   workDiv: {
-    // display: 'flex',
-    // flexDirection: 'column',
-    // alignItems: 'center',
-    // [theme.breakpoints.down('xs')]: {
-    //   width: '100vw'
-    // }
     height: '100%',
-
     display: 'flex',
-    // overflowX: 'hidden',
-    // flexDirection: 'row',
     flex: 1,
     flexWrap: 'wrap',
-    // [theme.breakpoints.down("sm")]: {
-    //   width: '100vw'
-    // }
-    // justifyContent: 'center'
   },
   leftSideDiv: {
     [theme.breakpoints.up('sm')]: {
@@ -62,10 +49,9 @@ const useStyles = makeStyles((theme) => ({
   flexContainer: {
     display: 'flex',
     flexWrap: 'wrap',
-    // maxWidth: theme.spacing(20),
     [theme.breakpoints.down('xs')]: {
       paddingLeft: theme.spacing(2),
-      paddingRight: theme.spacing(4)
+      paddingRight: theme.spacing(2)
     },
     justifyContent: 'center',
     paddingTop: theme.spacing(8),
@@ -83,13 +69,16 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flex: 1,
     [theme.breakpoints.down('sm')]: {
-      minWidth: 250,
-      // maxheight: 100
+      minWidth: 250
     }
+  },
+  link: {
+    color: 'inherit'
   }
 }))
 
 const Work = (props) => {
+  const { children } = props
   const [showAnimation, setShowAnimation] = useState(true)
 
   useEffect(() => {
@@ -105,10 +94,10 @@ const Work = (props) => {
       setShowAnimation(true)
     }
   })
-
-  console.log('render skills')
   const classes = useStyles()
   const theme = useTheme()
+  const { path, url } = useRouteMatch()
+  console.log('render work', path, url)
   return (
     <div id='workDiv' className={classes.workDiv}>
       <div id='leftSideDiv' className={classes.leftSideDiv}>
@@ -121,37 +110,35 @@ const Work = (props) => {
             My Work
           </Typography>
           <Typography variant='body2' className={classes.sentence}>
-            Here are some projects that I am have been working on. They are still in development.
+            Here are some projects that I have been working on. They are still in development.
           </Typography>
         </Container>
         <div id={'flipCardDiv'} className={classes.flexContainer}>
-          <FlipCard
-            styles={{
-              margin: theme.spacing(2) 
-            }}
-            imgUrl={'https://i.imgur.com/9qRzZfs.jpg'}
-            backImgUrl={'https://i.imgur.com/2esy9Az.jpg'}
-            title={'Discord bot'}
-            info={['NodeJS', 'MongoDB']}
-            redirectUrl={'https://github.com/ElavanResu/e-bot'}
-            inDevelopment
-          />
-          <FlipCard
-            styles={{
-              margin: theme.spacing(2) 
-            }}
-            imgUrl={'https://i.imgur.com/9qRzZfs.jpg'}
-            backImgUrl={'https://i.imgur.com/2esy9Az.jpg'}
-            title={'Expense App'}
-            info={['React Native', 'CSS', 'Watermelon DB']}
-            redirectUrl={'https://github.com/ElavanResu/ExpenseTracker'}
-            // inDevelopement
-          />
+          {
+            children.map(project => {
+              return (
+                <Link key={`link-${path}-${project.routeName}`} to={`${path}/${project.routeName}`} className={classes.link}>
+                  <FlipCard
+                    styles={{
+                      margin: theme.spacing(2) 
+                    }}
+                    cardImgUrl={project.childProps.cardImgUrl}
+                    backCardImgUrl={project.childProps.backCardImgUrl}
+                    title={project.childProps.title}
+                    tags={project.childProps.tags}
+                    githubLink={project.childProps.githubLink}
+                    inDevelopment={project.childProps.inDevelopment}
+                    id={project.childProps.id}
+                  />
+                </Link>
+              )
+            })
+          }
         </div>
       </div>
       {
         showAnimation && <div id='rightSideDiv' className={classes.rightContainer}>
-          <Animation
+          <TextParticleAnimation
             animationText={'💼'}
             particleColor={'#949699'}
           /> 

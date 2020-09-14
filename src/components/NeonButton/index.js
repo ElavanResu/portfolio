@@ -2,7 +2,7 @@ import React from 'react'
 import './index.css'
 
 const NeonButton = (props) => {
-  const { text, color, onClick } = props
+  const { text, onClick } = props
   return (
     <div data-text={`${text}`} id='neonButtonDiv' onClick={onClick}>
       <span></span>

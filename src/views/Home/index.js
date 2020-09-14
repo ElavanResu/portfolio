@@ -1,10 +1,9 @@
 import React from 'react'
 import Typography from '@material-ui/core/Typography'
-import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
-import Button from '@material-ui/core/Button'
 import { useHistory } from 'react-router-dom'
-import NeonButton from '../components/NeonButton'
+import NeonButton from '../../components/NeonButton'
 
 const useStyles = makeStyles((theme) => ({
   subtitle: {
@@ -35,13 +34,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = (props) => {
   console.log('render home')
-  const theme = createMuiTheme({
-    palette: {
-      secondary: {
-        main: '#3EFDD8'
-      },
-    },
-  })
   const classes = useStyles()
   const history = useHistory()
   const onKnowMore = () => {

@@ -2,7 +2,7 @@ import React from 'react'
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
-import Animation from './Animation'
+import TextParticleAnimation from '../../components/TextParticleAnimation'
 
 const useStyles = makeStyles((theme) => ({
   aboutDiv: {
@@ -37,10 +37,6 @@ const useStyles = makeStyles((theme) => ({
   title: {
     marginBottom: theme.spacing(4),
     color: '#3EFDD8'
-  },
-  sentence: {
-    color: '#949699',
-    marginBottom: theme.spacing(2)
   },
   sentence: {
     color: '#949699',
@@ -83,7 +79,7 @@ const About = (props) => {
         </Typography>
       </Container>
       <div className={classes.rightContainer}>
-        <Animation
+        <TextParticleAnimation
           animationText={'Hi'}
           particleColor={'#949699'}
         /> 

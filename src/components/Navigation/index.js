@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 // import CssBaseline from "@material-ui/core/CssBaseline";
 // import Divider from "@material-ui/core/Divider";
@@ -12,10 +11,11 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Toolbar from "@material-ui/core/Toolbar";
 // import Typography from "@material-ui/core/Typography";
 import { makeStyles, createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import Logo from '../logo'
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+import Logo from '../Logo'
 
 import NavBar from './NavBar'
+import ProjectDetails from "../../views/Work/ProjectDetails";
 
 let customTheme = createMuiTheme()
 
@@ -72,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ResponsiveDrawer(props) {
-  const { siderBarData } = props;
+  const { navBarRoutes } = props;
   const classes = useStyles();
   // const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -80,7 +80,29 @@ function ResponsiveDrawer(props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
+  let childRoutes = []
+  let parentRoutes = navBarRoutes.map(ele => {
+    const Component = ele.component
+    let exact = false
+    if (ele.children && ele.children.length > 0) {
+      console.log('routes: ', ele.routeName)
+      exact = true
+      let cRoutes = ele.children.map(child => {
+        const ChildComponent = child.component
+        return (
+          <Route path={`/${ele.routeName}/${child.routeName}`} key={`route-${ele.routeName}-${child.routeName}`}>
+            <ChildComponent {...child.childProps} />
+          </Route>
+        )
+      })
+      childRoutes = [...childRoutes, ...cRoutes]
+    }
+    return (
+      <Route exact={exact} path={`/${ele.routeName}`} key={`route-${ele.routeName}`}>
+        <Component children={ele.children} />
+      </Route>
+    )
+  })
   return (
     <Router>
       <div id='navigationRootDiv' className={classes.root}>
@@ -104,22 +126,15 @@ function ResponsiveDrawer(props) {
         <NavBar
           handleDrawerToggle={handleDrawerToggle}
           mobileOpen={mobileOpen}
-          siderBarData={siderBarData}
+          navBarRoutes={navBarRoutes}
           drawerWidth={drawerWidth}
         />
         <Switch>
-          {
-            siderBarData.map(ele => {
-              const Component = ele.component
-              return (
-                <Route exact path={(ele.root ? [`/${ele.routeName}`, '/'] : `/${ele.routeName}`)} key={`route-${ele.routeName}`}>
-                  <ThemeProvider theme={customTheme}>
-                    <Component />
-                  </ThemeProvider>
-                </Route>
-              )
-            })
-          }
+          {parentRoutes}
+          {childRoutes}
+          <Route exact path="/">
+            <Redirect to='/home' />
+          </Route>
         </Switch>
       </div>
     </Router>
