@@ -63,7 +63,7 @@
   flex-wrap: wrap;
 }
 
-.flip-card .back .cover .info-label {
+.flip-card .back .cover .tag-label {
   border: 1px ;
   height: 15px;
   width: 40;

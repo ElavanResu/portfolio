@@ -5,7 +5,7 @@ import Hidden from "@material-ui/core/Hidden";
 import { makeStyles } from "@material-ui/core/styles";
 
 const NavBar = (props) => {
-  const { mobileOpen, handleDrawerToggle, siderBarData, drawerWidth } = props
+  const { mobileOpen, handleDrawerToggle, navBarRoutes, drawerWidth } = props
 
   const useStyles = makeStyles((theme) => ({
     drawer: {
@@ -48,7 +48,7 @@ const NavBar = (props) => {
         >
           <SideNav
             handleDrawerToggle={handleDrawerToggle}
-            siderBarData={siderBarData}
+            navBarRoutes={navBarRoutes}
           />
         </Drawer>
       </Hidden>
@@ -64,7 +64,7 @@ const NavBar = (props) => {
         >
           <SideNav
             showLogo
-            siderBarData={siderBarData}
+            navBarRoutes={navBarRoutes}
           />
         </Drawer>
       </Hidden>

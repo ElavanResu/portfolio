@@ -1,11 +1,11 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect } from 'react'
 
 const Loading = (props) => {
   const canvasRef = useRef(null)
   let ww
   let wh
 
-  const { colors, backgroundColor } = props
+  const { colors } = props
 
   // Define properties of your animation unit, it's like a factory
   function Particles (context, canvas, x, y, radius, color) {

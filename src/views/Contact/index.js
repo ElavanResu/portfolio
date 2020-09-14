@@ -5,8 +5,8 @@ import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import Snackbar from '@material-ui/core/Snackbar'
-import { makeStyles, withStyles, ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
-import Animation from './Animation'
+import { makeStyles, ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import TextParticleAnimation from '../../components/TextParticleAnimation'
 
 const useStyles = makeStyles((theme) => ({
   contactDiv: {
@@ -344,7 +344,7 @@ const Contacts = (props) => {
       </Container>
       {
         showAnimation && <div id={'contactAnimationDiv'} className={classes.rightContainer}>
-          <Animation
+          <TextParticleAnimation
             animationText={'📞'}
             particleColor={'#949699'}
           /> 

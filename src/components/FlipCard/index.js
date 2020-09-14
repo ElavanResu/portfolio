@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import './flipCard.css'
 
 const useStyles = makeStyles((theme) => ({
-  infoText: {
+  tagText: {
     display: 'flex',
     alignItems: 'center'
   }
@@ -12,48 +12,48 @@ const useStyles = makeStyles((theme) => ({
 
 const FlipCard = (props) => {
   const classes = useStyles()
-  const onCardClick = () => {
-    window.open(`${props.redirectUrl}`, '_blank');
-  }
+  // const onCardClick = () => {
+  //   window.open(`${props.githubLink}`, '_blank');
+  // }
   return (
-    <div class={'flip-card'} onClick={onCardClick} style={props.styles}>
-      <div class={'front'}
+    <div className={'flip-card'} style={props.styles}>
+      <div className={'front'}
         style={{
-          backgroundImage: `url(${props.imgUrl})`
+          backgroundImage: `url(${props.cardImgUrl})`
         }}
       >
-        <div class={'top-label'}>
+        <div className={'top-label'}>
           <Typography variant="caption">
             {props.title}
           </Typography>
         </div>
         {
-          props.inDevelopment && <div class={'bottom-label'}>
+          props.inDevelopment && <div className={'bottom-label'}>
             <Typography variant="caption">
               {'In Development'}
             </Typography>
           </div>
         }
       </div>
-      <div class='back'
+      <div className='back'
         style={{
-          backgroundImage: `url(${props.backImgUrl})`
+          backgroundImage: `url(${props.backCardImgUrl})`
         }}
       >
-        <div class={'cover'}>
+        <div className={'cover'}>
           {
-            props.info.map(ele => {
+            props.tags.map((ele, index) => {
               return (
-                <div class={'info-label'}>
-                  <Typography variant="caption" className={classes.infoText}>
+                <div className={'tag-label'} key={`${props.id}-tags-${index}`}>
+                  <Typography variant="caption" className={classes.tagText}>
                     {ele}
                   </Typography>
                 </div>
               )
             })
           }
-          <div class={'info-label'}>
-            <Typography variant="caption" className={classes.infoText}>
+          <div className={'tag-label'}>
+            <Typography variant="caption" className={classes.tagText}>
               More Details...
             </Typography>
           </div>

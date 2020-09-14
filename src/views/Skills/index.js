@@ -2,7 +2,7 @@ import React from 'react'
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
-import Animation from './Animation'
+import TextParticleAnimation from '../../components/TextParticleAnimation'
 
 const useStyles = makeStyles((theme) => ({
   skillsDiv: {
@@ -84,7 +84,7 @@ const Skills = (props) => {
         </Typography>
       </Container>
       <div className={classes.rightContainer}>
-        <Animation
+        <TextParticleAnimation
           animationText={'JS'}
           particleColor={'#949699'}
         />  
