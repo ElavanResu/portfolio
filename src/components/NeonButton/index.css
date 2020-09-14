@@ -92,7 +92,7 @@
   width: 100%;
   height: 1px;
   background: linear-gradient(90deg, transparent, #3EFDD8);
-  animation: top-beam 0.8s ease 1s infinite normal ;
+  animation: top-beam 0.8s ease 1s infinite normal;
 }
 
 @keyframes top-beam {

@@ -347,7 +347,7 @@ const Contacts = (props) => {
           <Animation
             animationText={'📞'}
             particleColor={'#949699'}
-          /> 
+          />
         </div>
       }
       <Snackbar

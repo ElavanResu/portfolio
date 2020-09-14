@@ -1,0 +1,25 @@
+#aboutLoadingDiv {
+  /* max-height: 100vh; */
+  /* position: absolute; */
+  /* left: 0; */
+  /* right: 0; */
+  /* background: black; */
+  /* transform: translateX(-56px); */
+  /* z-index: 1200; */
+  /* opacity: 1; */
+  /* animation: move-loading 1s ease 1.5s 1 forwards; */
+}
+
+@keyframes move-loading {
+  0% {
+    /* transform: translateX(0%); */
+  }
+  100% {
+    /* transform: translateX(calc(-100% - 56px)); */
+  }
+}
+
+#test {
+  display: flex;
+  flex-grow: 1;
+}

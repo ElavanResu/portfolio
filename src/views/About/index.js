@@ -2,7 +2,9 @@ import React from 'react'
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
-import Animation from './Animation'
+import Animation from '../Animation'
+import Loading from '../../components/Loading'
+import './about.css'
 
 const useStyles = makeStyles((theme) => ({
   aboutDiv: {
@@ -63,6 +65,13 @@ const About = (props) => {
   console.log('render about')
   const classes = useStyles()
   return (
+    // <div id='test'>
+    //   <div id='aboutLoadingDiv'>
+    //     <Loading
+    //       colors={['#949699', '#3EFDD8']}
+    //       backgroundColor={'#1d1d1d0d'}
+    //     />
+    //   </div>
     <div id='aboutDiv' className={classes.aboutDiv}>
       <Container maxWidth='xs' id='aboutdiv'
         classes={{
@@ -86,9 +95,11 @@ const About = (props) => {
         <Animation
           animationText={'Hi'}
           particleColor={'#949699'}
-        /> 
+          // delay={1000}
+        />
       </div>
     </div>
+    // </div>
   )
 }
 

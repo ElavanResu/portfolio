@@ -87,7 +87,7 @@ const Skills = (props) => {
         <Animation
           animationText={'JS'}
           particleColor={'#949699'}
-        />  
+        />
       </div>
     </div>
   )

@@ -4,6 +4,7 @@ const randomIntFromRange = (min, max) => {
 }
 
 const Animation = (props) => {
+  const { delay } = props
   console.log('Render animation')
   const canvasRef = useRef(null)
   let viewRef = useRef(null)
@@ -160,7 +161,9 @@ const Animation = (props) => {
       })
     }
 
-    render()
+    setTimeout(() => {
+      render()
+    }, delay)
 
     return () => {
       window.cancelAnimationFrame(animationFrameId)

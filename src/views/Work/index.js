@@ -3,8 +3,8 @@ import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
-import FlipCard from '../components/flipCard'
-import Animation from './Animation'
+import FlipCard from '../../components/flipCard'
+import Animation from '../Animation'
 
 const useStyles = makeStyles((theme) => ({
   workDiv: {
@@ -154,7 +154,7 @@ const Work = (props) => {
           <Animation
             animationText={'💼'}
             particleColor={'#949699'}
-          /> 
+          />
         </div>
       }
     </div>

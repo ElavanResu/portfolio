@@ -1,0 +1,25 @@
+.lift-enter {
+    transform: translateX(100%);
+}
+
+.lift-enter-active {
+    transform: translateX(0%);
+}
+
+.lift-exit {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    transform: translateX(0%);
+}
+
+.lift-exit-active {
+    transform: translateX(-100%);
+    transition: transform 1s ease;
+}
+
+.lift-enter-active {
+    transition: transform 1s ease;
+}
