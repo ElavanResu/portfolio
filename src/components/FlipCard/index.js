@@ -43,13 +43,16 @@ const FlipCard = (props) => {
         <div className={'cover'}>
           {
             props.tags.map((ele, index) => {
-              return (
-                <div className={'tag-label'} key={`${props.id}-tags-${index}`}>
-                  <Typography variant="caption" className={classes.tagText}>
-                    {ele}
-                  </Typography>
-                </div>
-              )
+              if (index < 3) {
+                return (
+                  <div className={'tag-label'} key={`${props.id}-tags-${index}`}>
+                    <Typography variant="caption" className={classes.tagText}>
+                      {ele}
+                    </Typography>
+                  </div>
+                )
+              }
+              return null
             })
           }
           <div className={'tag-label'}>

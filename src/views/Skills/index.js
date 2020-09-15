@@ -3,6 +3,7 @@ import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import TextParticleAnimation from '../../components/TextParticleAnimation'
+import { Link, useRouteMatch } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   skillsDiv: {
@@ -60,6 +61,7 @@ const useStyles = makeStyles((theme) => ({
 const Skills = (props) => {
   const classes = useStyles()
   console.log('re render')
+  const { path } = useRouteMatch()
   return (
     <div id='skillsDiv' className={classes.skillsDiv}>
       <Container maxWidth='xs' id='skillContainer'
@@ -80,7 +82,20 @@ const Skills = (props) => {
           I have also worked on back end environment to build REST APIs using node framewords, like express, fastify and feathers to store and retrive data from databases like MongoDB and MySQL.
         </Typography>
         <Typography variant='body2' className={classes.lastSentence}>
-          Visit my <a className={classes.secondaryColor} href='https://www.linkedin.com/in/shubhamnavale' rel='noopener noreferrer' target='_blank'>LikedIn</a> profile for more details. Or you can just <a className={classes.secondaryColor} href='http://localhost:3000/contact'>contact</a> me.
+          {'Visit my '}
+          <a
+            className={classes.secondaryColor}
+            href='https://www.linkedin.com/in/shubhamnavale'
+            rel='noopener noreferrer'
+            target='_blank'
+          >
+            LikedIn
+          </a>
+          {' profile for more details. Or you can just '}
+          <Link style={{ color: '#3EFDD8' }} to={`${path}/contact`}>
+            {'contact'}
+          </Link>
+          {' me.'}
         </Typography>
       </Container>
       <div className={classes.rightContainer}>

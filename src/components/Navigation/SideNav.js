@@ -87,7 +87,7 @@ const SideNav = (props) => {
         {navBarRoutes.map((ele, index) => {
           const IconType = IconMapper[ele.iconName]
           return (
-            <Link key={`link-${ele.routeName}`} to={`/${ele.routeName}`} className={classes.link} onClick={handleDrawerToggle}>
+            <Link key={`link-${ele.routeName}`} to={`/${ele.routeName}`} onClick={handleDrawerToggle}>
               <ListItem className={classes.listItem} key={ele.routeName}>
                 {/* <ListItemIcon> */}
                   <IconType className={(`/${ele.routeName}` === location.pathname) ? classes.activeIcon : classes.inactiveIcons} />
