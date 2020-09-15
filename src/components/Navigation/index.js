@@ -40,17 +40,14 @@ const useStyles = makeStyles((theme) => ({
   toolbar: {
     ...theme.mixins.toolbar,
     [theme.breakpoints.down('sm')]: {
-      paddingLeft: 0
+      paddingLeft: 0,
+      justifyContent: 'space-between'
     }
   },
   menuButton: {
     // marginRight: theme.spacing(2),
     [theme.breakpoints.up("sm")]: {
       display: "none"
-    },
-    [theme.breakpoints.down('sm')]: {
-      flexGrow: 1,
-      justifyContent: 'flex-end'
     }
   },
   // necessary for content to be below app bar
