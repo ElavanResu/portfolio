@@ -71,10 +71,10 @@
   }
 }
 
-#navBarListContainer a li svg {
+#navBarDivContainer svg {
   transition: 0.2s;
 }
 
-#navBarListContainer a:hover li svg {
+#navBarDivContainer svg:hover {
   color: #3EFDD8;
 }
