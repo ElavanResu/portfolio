@@ -1,6 +1,8 @@
 import React from 'react'
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
+import classNames from 'classnames'
+
 import './flipCard.css'
 
 const useStyles = makeStyles((theme) => ({
@@ -12,11 +14,12 @@ const useStyles = makeStyles((theme) => ({
 
 const FlipCard = (props) => {
   const classes = useStyles()
+  const { customClasses } = props
   // const onCardClick = () => {
   //   window.open(`${props.githubLink}`, '_blank');
   // }
   return (
-    <div className={'flip-card'} style={props.styles}>
+    <div className={classNames('flip-card', customClasses)} style={props.styles}>
       <div className={'front'}
         style={{
           backgroundImage: `url(${props.cardImgUrl})`

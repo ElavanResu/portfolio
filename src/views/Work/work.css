@@ -1,6 +1,6 @@
 #projectDetailsDiv {
   max-width: 1010px;
-  margin: 80px auto 80px auto;
+  margin: 80px auto 50px auto;
   text-align: left;
 }
 
@@ -85,6 +85,13 @@
   width: 50%;
   height: 1px;
   border: 0
+}
+
+@media (max-width: 800px) {
+  #projectDetailsDiv hr,
+  #techInfoDiv hr {
+    width: 100%;
+  }
 }
 
 #projectDetailsDiv #techInfoDiv ul {

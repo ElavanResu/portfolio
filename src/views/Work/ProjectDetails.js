@@ -4,6 +4,9 @@ import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import GitHubIcon from '@material-ui/icons/GitHub';
 import { Link } from 'react-router-dom'
+import classNames from 'classnames'
+
+import useStyles from './projectDetailsStyles'
 import './work.css'
 
 const theme = createMuiTheme({
@@ -18,6 +21,7 @@ const theme = createMuiTheme({
 })
 
 const ProjectDetails = (props) => {
+  const classes = useStyles()
   console.log('project props:', props)
   const { id, title, shortDescription, about, banner, cardImgUrl, backCardImgUrl, tags, githubLink, inDevelopment} = props
   const goToLink = () => {
@@ -26,11 +30,11 @@ const ProjectDetails = (props) => {
   return (
     <div id='projectDetailsDiv'>
       <div id='titleDiv'>
-        <Typography id='title' className='title' variant='h3'>
+        <Typography id='title' className={classNames('title', classes.titleAnimation)} variant='h3'>
           {title}
         </Typography>
       </div>
-      <Typography id='shortDesc' className='subtitle' variant='body1'>
+      <Typography id='shortDesc' className={classNames('subtitle', classes.paraOneAnimation)} variant='body1'>
         {shortDescription}
       </Typography>
       <div id='firstLevelInfo'>
@@ -40,21 +44,22 @@ const ProjectDetails = (props) => {
             color='primary'
             startIcon={<GitHubIcon />}
             onClick={goToLink}
+            className={classes.buttonOne}
           >
             Checkout Repo
           </Button>
         </ThemeProvider>
       </div>
-      <img id='image' src={banner} />
+      <img className={classes.image} id='image' src={banner} />
       <div id='aboutDiv'>
-        <Typography id={'heading'} className='title' variant='h4'>
+        <Typography id={'heading'} className={classNames('title', classes.titleTwoAnimation)} variant='h4'>
           {'About the project'}
         </Typography>
-        <hr />
+        <hr className={classes.hrOneAnimation}/>
         {
           about.map((paragraph, index) => {
             return (
-              <Typography id={`paragraph`} className='subtitle' key={`paragraph-${index}`} variant='body1'>
+              <Typography id={`paragraph`} className={classNames('subtitle', classes.levelTwoPara)} key={`paragraph-${index}`} variant='body1'>
                 {paragraph}
               </Typography>
             )
@@ -62,14 +67,14 @@ const ProjectDetails = (props) => {
         }
       </div>
       <div id='techInfoDiv'>
-        <Typography id={'heading'} className='title' variant='h4'>
+        <Typography id={'heading'} className={classNames('title', classes.titleThreeAnimation)} variant='h4'>
           {'Tech Sheet'}
         </Typography>
-        <Typography id='techInfoLabel' className='subtitle' variant='body1'>
+        <Typography id='techInfoLabel' className={classNames('subtitle', classes.levelThreePara)} variant='body1'>
           {'Technologies I used while working on this project'}
         </Typography>
-        <hr />
-        <ul>
+        <hr className={classes.hrTwoAnimation}/>
+        <ul className={classes.listOneAnimation}>
           {
             tags.map((tag, index) => {
               return (
@@ -83,7 +88,7 @@ const ProjectDetails = (props) => {
           }
         </ul>
       </div>
-      <div id='metaInfoDiv'>
+      <div id='metaInfoDiv' className={classes.footerAnimation}>
         <Typography id={'heading'} variant='subtitle2'>
           {'What do you think?'}
         </Typography>

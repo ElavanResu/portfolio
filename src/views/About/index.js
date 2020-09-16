@@ -1,59 +1,10 @@
 import React from 'react'
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
-import { makeStyles } from '@material-ui/core/styles'
-import TextParticleAnimation from '../../components/TextParticleAnimation'
+import classNames from 'classnames'
 
-const useStyles = makeStyles((theme) => ({
-  aboutDiv: {
-    // position: 'relative',
-    display: 'flex',
-    overflowX: 'hidden',
-    // flexDirection: 'row',
-    flex: 1,
-    flexWrap: 'wrap'
-    // justifyContent: 'center'
-  },
-  leftRootContainer: {
-    textAlign: 'left',
-    [theme.breakpoints.up('sm')]: {
-      justifyContent: 'center',
-      display: 'flex',
-      flexDirection: 'column',
-    },
-    marginLeft: 0,
-    marginRight: 0,
-    [theme.breakpoints.down('xs')]: {
-      paddingLeft: theme.spacing(2),
-      paddingRight: theme.spacing(2),
-      paddingTop: theme.spacing(10),
-      // minHeight: 400,
-      // justifyContent: 'unset',
-      marginBottom: theme.spacing(6)
-    },
-    paddingLeft: theme.spacing(8),
-    paddingRight: theme.spacing(0)
-  },
-  title: {
-    marginBottom: theme.spacing(4),
-    color: '#3EFDD8'
-  },
-  sentence: {
-    color: '#949699',
-    marginBottom: theme.spacing(2)
-  },
-  lastSentence: {
-    color: '#949699',
-  },
-  rightContainer: {
-    display: 'flex',
-    flex: 1,
-    [theme.breakpoints.down('sm')]: {
-      minWidth: 250,
-      // maxheight: 100
-    }
-  }
-}))
+import TextParticleAnimation from '../../components/TextParticleAnimation'
+import useStyles from './styles'
 
 const About = (props) => {
   console.log('render about')
@@ -65,16 +16,16 @@ const About = (props) => {
           root: classes.leftRootContainer
         }}
       >
-        <Typography variant='h3' className={classes.title}>
+        <Typography variant='h3' className={classNames(classes.title, classes.titleAnimation)}>
           About me
         </Typography>
-        <Typography variant='body2' className={classes.sentence}>
+        <Typography variant='body2' className={classNames(classes.sentence, classes.paraOneAnimation)}>
           Worked in a web and android app development industry for 2.7 years. Currently working as a Software Developer at Coradius Technologies, a tech startup which provides financial technical solutions.
         </Typography>
-        <Typography variant='body2' className={classes.sentence}>
+        <Typography variant='body2' className={classNames(classes.sentence, classes.paraTwoAnimation)}>
           Positive thinker, well-organised, problem solver, quick learner and ability to cope with different situations. Working as a software developer, I have learned that I can never quench my thirst of knowledge. Every other developer or colleague has something to teach me.
         </Typography>
-        <Typography variant='body2' className={classes.lastSentence}>
+        <Typography variant='body2' className={classNames(classes.lastSentence, classes.paraThreeAnimation)}>
           When not working, you'll find me playing my guitar-trying to develop muscle memory for chords, experimenting in the kitchen or playing co-op multiplayer games on steam.
         </Typography>
       </Container>
@@ -82,6 +33,7 @@ const About = (props) => {
         <TextParticleAnimation
           animationText={'Hi'}
           particleColor={'#949699'}
+          delay={1200}
         /> 
       </div>
     </div>
