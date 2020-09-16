@@ -24,7 +24,7 @@ const ProjectDetails = (props) => {
     window.open(githubLink, '_blank');
   }
   return (
-    <div id='projectDetailsDiv' className='projectDetailContainer'>
+    <div id='projectDetailsDiv'>
       <div id='titleDiv'>
         <Typography id='title' className='title' variant='h3'>
           {title}
@@ -45,7 +45,7 @@ const ProjectDetails = (props) => {
           </Button>
         </ThemeProvider>
       </div>
-      <img id='image' width='100%' src={banner} />
+      <img id='image' src={banner} />
       <div id='aboutDiv'>
         <Typography id={'heading'} className='title' variant='h4'>
           {'About the project'}

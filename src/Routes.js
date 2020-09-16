@@ -53,7 +53,7 @@ const navBarRoutes = [
           id: 'expense-tracker',
           title: 'Expense Tracker',
           cardImgUrl: 'https://i.imgur.com/9qRzZfs.jpg',
-          banner: 'https://i.imgur.com/KGuzIQc.jpg',
+          banner: 'https://i.imgur.com/1AHI69G.jpg',
           backCardImgUrl: 'https://i.imgur.com/2esy9Az.jpg',
           tags: ['React Native', 'CSS', 'JavaScript', 'Watermelon DB', 'NodeJS', 'Express', 'MongoDB'],
           githubLink: 'https://github.com/ElavanResu/ExpenseTracker',

@@ -49,6 +49,8 @@
 @media (max-width: 800px) {
   #projectDetailsDiv {
     max-width: 500px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }
 
@@ -61,6 +63,14 @@
 #projectDetailsDiv #aboutDiv,
 #projectDetailsDiv #techInfoDiv {
   margin-top: 32px;
+}
+
+#projectDetailsDiv #image {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 #projectDetailsDiv #aboutDiv #paragraph,

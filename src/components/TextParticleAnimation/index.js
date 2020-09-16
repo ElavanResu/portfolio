@@ -83,7 +83,7 @@ const Animation = (props) => {
     context.textAlign = 'center'
     context.textBaseline = 'middle'
     // context.scale(-1, 1)
-    context.fillText(props.animationText, ww/2, wh/2)
+    context.fillText(props.animationText, ww/2, (wh/2 + (10/100) * wh/2))
 
 
     const data  = context.getImageData(0, 0, ww, wh).data
