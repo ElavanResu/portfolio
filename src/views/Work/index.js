@@ -33,16 +33,16 @@ const Work = (props) => {
   console.log('render work', path, url)
   return (
     <div id='workDiv' className={classes.workDiv}>
-      <div id='leftSideDiv' className={classes.leftSideDiv}>
+      <div id='workLeftSideContainer' className={classes.leftSideDiv}>
         <Container maxWidth='xs' id='workContainer'
           classes={{
             root: classes.rootContainer
           }}
         >
-          <Typography variant='h3' className={classNames(classes.title, classes.titleAnimation)}>
+          <Typography id='titleText' variant='h3' className={classNames(classes.title, classes.titleAnimation)}>
             My Work
           </Typography>
-          <Typography variant='body2' className={classNames(classes.sentence, classes.paraOneAnimation)}>
+          <Typography id='paraOneText' variant='body2' className={classNames(classes.sentence, classes.paraOneAnimation)}>
             Here are some projects that I have been working on. They are still in development.
           </Typography>
         </Container>
@@ -50,7 +50,7 @@ const Work = (props) => {
           {
             children.map(project => {
               return (
-                <Link key={`link-${path}-${project.routeName}`} to={`${path}/${project.routeName}`}>
+                <Link id={`link-${path}-${project.routeName}`} key={`link-${path}-${project.routeName}`} to={`${path}/${project.routeName}`}>
                   <FlipCard
                     customClasses={classes[`flipCard${project.childProps.id}`]}
                     styles={{
@@ -71,7 +71,7 @@ const Work = (props) => {
         </div>
       </div>
       {
-        showAnimation && <div id='rightSideDiv' className={classes.rightContainer}>
+        showAnimation && <div id='workRightSideContainer' className={classes.rightContainer}>
           <TextParticleAnimation
             animationText={'💼'}
             particleColor={'#949699'}

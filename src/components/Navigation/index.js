@@ -73,7 +73,7 @@ function ResponsiveDrawer(props) {
       let cRoutes = ele.children.map(child => {
         const ChildComponent = child.component
         return (
-          <Route path={`/${ele.routeName}/${child.routeName}`} key={`route-${ele.routeName}-${child.routeName}`}>
+          <Route id={`${ele.routeName}-${child.routeName}-route-anchor`} path={`/${ele.routeName}/${child.routeName}`} key={`route-${ele.routeName}-${child.routeName}`}>
             <ChildComponent {...child.childProps} />
           </Route>
         )
@@ -81,7 +81,7 @@ function ResponsiveDrawer(props) {
       childRoutes = [...childRoutes, ...cRoutes]
     }
     return (
-      <Route exact={exact} path={`/${ele.routeName}`} key={`route-${ele.routeName}`}>
+      <Route id={`${ele.routeName}-route-anchor`} exact={exact} path={`/${ele.routeName}`} key={`route-${ele.routeName}`}>
         <Component children={ele.children} />
       </Route>
     )
@@ -90,17 +90,18 @@ function ResponsiveDrawer(props) {
     <Router>
       <div id='navigationRootDiv' className={classes.root}>
         <Hidden smUp implementation='css'>
-          <AppBar position='fixed' className={classes.appBar}>
-            <Toolbar className={classes.toolbar}>
-              <div className={classes.title}><Logo /></div>
+          <AppBar id='appBar' position='fixed' className={classes.appBar}>
+            <Toolbar id='toolBar' className={classes.toolbar}>
+              <div id='mobileLogoDiv' className={classes.title}><Logo /></div>
               <IconButton
+                id='menuIconButton'
                 color='inherit'
                 aria-label='open drawer'
                 edge='end'
                 onClick={handleDrawerToggle}
                 className={classes.menuButton}
               >
-                <MenuIcon />
+                <MenuIcon id='menuIcon' />
               </IconButton>
             </Toolbar>
           </AppBar>
@@ -114,7 +115,7 @@ function ResponsiveDrawer(props) {
         <Switch>
           {parentRoutes}
           {childRoutes}
-          <Route exact path='/'>
+          <Route id='rootPathAnchor' exact path='/'>
             <Redirect to='/home' />
           </Route>
         </Switch>

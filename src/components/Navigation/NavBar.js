@@ -33,9 +33,10 @@ const NavBar = (props) => {
   const classes = useStyles()
 
   return (
-    <nav className={classes.drawer} aria-label='mailbox folders'>
+    <nav id='navTag' className={classes.drawer} aria-label='mailbox folders'>
       <Hidden smUp implementation='css'>
         <Drawer
+          id='drawerMenuMobile'
           variant='temporary'
           anchor={'right'}
           open={mobileOpen}

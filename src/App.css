@@ -44,21 +44,6 @@
   }
 }
 
-#introductionContainer {
-  overflow: hidden;
-  margin-top: -200vh;
-  animation: slide-home-content 0.7s ease 0s 1 forwards;
-}
-
-@keyframes slide-home-content {
-  0% {
-    margin-top: -200vh;
-  }
-  100% {
-    margin-top: 0;
-  }
-}
-
 @keyframes slide-home-know-more-button {
   0% {
     bottom: -80px;
@@ -71,10 +56,10 @@
   }
 }
 
-#navBarDivContainer svg {
+#sideNavDivContainer svg {
   transition: 0.2s;
 }
 
-#navBarDivContainer svg:hover {
+#sideNavDivContainer svg:hover {
   color: #3EFDD8;
 }

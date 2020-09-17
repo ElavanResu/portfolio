@@ -37,19 +37,19 @@ const useStyles = makeStyles((theme) => {
       opacity: 0,
       transform: `translateY(20px)`,
       color: '#3EFDD8',
-      animation: '$slideHomeContent 0.45s ease 0.2s 1 forwards'
+      animation: '$fadeIn 0.45s ease 0.2s 1 forwards'
     },
     paraOneAnimation: {
       opacity: 0,
       transform: `translateY(20px)`,
-      animation: '$slideHomeContent 0.45s ease 0.45s 1 forwards'
+      animation: '$fadeIn 0.45s ease 0.45s 1 forwards'
     },
     buttonOne: {
       opacity: 0,
       transform: `translateY(20px)`,
-      animation: '$slideHomeContent 0.45s ease 0.7s 1 forwards'
+      animation: '$fadeIn 0.45s ease 0.7s 1 forwards'
     },
-    '@keyframes slideHomeContent': {
+    '@keyframes fadeIn': {
       '0%': {
         opacity: 0,
         transform: `translateY(20px)`
@@ -107,7 +107,7 @@ const useStyles = makeStyles((theme) => {
     initialStyles[`flipCard${ele.childProps.id}`] = {
       opacity: 0,
       transform: `translateY(20px)`,
-      animation: `$slideHomeContent 0.45s ease ${initialAnimationTime + (0.25 * (1 * index))}s 1 forwards`
+      animation: `$fadeIn 0.45s ease ${initialAnimationTime + (0.25 * (1 * index))}s 1 forwards`
     }
   })
   return initialStyles

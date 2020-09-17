@@ -30,16 +30,17 @@ const ProjectDetails = (props) => {
   return (
     <div id='projectDetailsDiv'>
       <div id='titleDiv'>
-        <Typography id='title' className={classNames('title', classes.titleAnimation)} variant='h3'>
+        <Typography id='titleText' className={classNames('title', classes.titleAnimation)} variant='h3'>
           {title}
         </Typography>
       </div>
-      <Typography id='shortDesc' className={classNames('subtitle', classes.paraOneAnimation)} variant='body1'>
+      <Typography id='shortDescText' className={classNames('subtitle', classes.paraOneAnimation)} variant='body1'>
         {shortDescription}
       </Typography>
       <div id='firstLevelInfo'>
         <ThemeProvider theme={theme}>
           <Button
+            id='checkoutRepoButton'
             variant='contained'
             color='primary'
             startIcon={<GitHubIcon />}
@@ -50,9 +51,9 @@ const ProjectDetails = (props) => {
           </Button>
         </ThemeProvider>
       </div>
-      <img className={classes.image} id='image' src={banner} />
+      <img id='bannerImageTag' className={classes.image} id='image' src={banner} />
       <div id='aboutDiv'>
-        <Typography id={'heading'} className={classNames('title', classes.titleTwoAnimation)} variant='h4'>
+        <Typography id={'headingText'} className={classNames('title', classes.titleTwoAnimation)} variant='h4'>
           {'About the project'}
         </Typography>
         <hr className={classes.hrOneAnimation}/>
@@ -67,18 +68,18 @@ const ProjectDetails = (props) => {
         }
       </div>
       <div id='techInfoDiv'>
-        <Typography id={'heading'} className={classNames('title', classes.titleThreeAnimation)} variant='h4'>
+        <Typography id={'headingText'} className={classNames('title', classes.titleThreeAnimation)} variant='h4'>
           {'Tech Sheet'}
         </Typography>
-        <Typography id='techInfoLabel' className={classNames('subtitle', classes.levelThreePara)} variant='body1'>
+        <Typography id='techInfoLabelText' className={classNames('subtitle', classes.levelThreePara)} variant='body1'>
           {'Technologies I used while working on this project'}
         </Typography>
-        <hr className={classes.hrTwoAnimation}/>
-        <ul className={classes.listOneAnimation}>
+        <hr id='hrOne' className={classes.hrTwoAnimation}/>
+        <ul id='listContainer' className={classes.listOneAnimation}>
           {
             tags.map((tag, index) => {
               return (
-                <li key={`${tag}`}>
+                <li id={`listItem-${index}`} key={`${tag}`}>
                   <Typography id={`${tag}`} className='subtitle' variant='body1'>
                     {tag}
                   </Typography>
@@ -89,15 +90,15 @@ const ProjectDetails = (props) => {
         </ul>
       </div>
       <div id='metaInfoDiv' className={classes.footerAnimation}>
-        <Typography id={'heading'} variant='subtitle2'>
+        <Typography id={'headingText'} variant='subtitle2'>
           {'What do you think?'}
         </Typography>
-        <Typography id={'content1'} variant='body2'>
+        <Typography id={'contentOne'} variant='body2'>
           {'Wanna get in touch or talk about a project?'}
         </Typography>
-        <Typography id={'content2'} variant='body2'>
+        <Typography id={'contentTwo'} variant='body2'>
           {`Drop a line in the form at the `}
-          <Link style={{ color: '#949699', fontWeight: 'bolder' }} to={`/contact`}>
+          <Link id={'link-contact-anchor'} style={{ color: '#949699', fontWeight: 'bolder' }} to={`/contact`}>
             {'Contact'}
           </Link>
           {' section.'}

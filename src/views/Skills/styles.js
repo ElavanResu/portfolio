@@ -32,29 +32,29 @@ const useStyles = makeStyles((theme) => ({
   titleAnimation: {
     opacity: 0,
     transform: `translateY(20px)`,
-    animation: '$slideHomeContent 0.45s ease 0.2s 1 forwards'
+    animation: '$fadeIn 0.45s ease 0.2s 1 forwards'
   },
   paraOneAnimation: {
     opacity: 0,
     transform: `translateY(20px)`,
-    animation: '$slideHomeContent 0.45s ease 0.45s 1 forwards'
+    animation: '$fadeIn 0.45s ease 0.45s 1 forwards'
   },
   paraTwoAnimation: {
     opacity: 0,
     transform: `translateY(20px)`,
-    animation: '$slideHomeContent 0.45s ease 0.7s 1 forwards'
+    animation: '$fadeIn 0.45s ease 0.7s 1 forwards'
   },
   paraThreeAnimation: {
     opacity: 0,
     transform: `translateY(20px)`,
-    animation: '$slideHomeContent 0.45s ease 0.95s 1 forwards'
+    animation: '$fadeIn 0.45s ease 0.95s 1 forwards'
   },
   paraFourAnimation: {
     opacity: 0,
     transform: `translateY(20px)`,
-    animation: '$slideHomeContent 0.45s ease 1.2s 1 forwards'
+    animation: '$fadeIn 0.45s ease 1.2s 1 forwards'
   },
-  '@keyframes slideHomeContent': {
+  '@keyframes fadeIn': {
     '0%': {
       opacity: 0,
       transform: `translateY(20px)`

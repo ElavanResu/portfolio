@@ -5,7 +5,7 @@ import Entry from './Entry'
 
 function App() {
   return (
-    <div className='App-header'>
+    <div id='appHeaderDiv' className='App-header'>
       <Entry />
     </div>
   )

@@ -80,25 +80,25 @@ const SideNav = (props) => {
   console.log('location: ', location)
   const classes = useStyles()
   return (
-    <div id={'navBarDivContainer'} className={classes.navBarDiv}>
-      {showLogo && <div className={classes.logoContainer}><Logo /></div>}
+    <div id={'sideNavDivContainer'} className={classes.navBarDiv}>
+      {showLogo && <div id='logoDiv' className={classes.logoContainer}><Logo /></div>}
       {/* <Divider /> */}
-      <List id={'navBarListContainer'}>
+      <List id={'sideNavListContainer'}>
         {navBarRoutes.map((ele, index) => {
           const IconType = IconMapper[ele.iconName]
           return (
-            <Link key={`link-${ele.routeName}`} to={`/${ele.routeName}`} onClick={handleDrawerToggle}>
-              <ListItem className={classes.listItem} key={ele.routeName}>
+            <Link id={`link-${ele.routeName}`} key={`link-${ele.routeName}`} to={`/${ele.routeName}`} onClick={handleDrawerToggle}>
+              <ListItem id={`ListItem-${ele.routeName}`} className={classes.listItem} key={ele.routeName}>
                 {/* <ListItemIcon> */}
-                  <IconType className={(`/${ele.routeName}` === location.pathname) ? classes.activeIcon : classes.inactiveIcons} />
+                  <IconType id={`${ele.routeName}-icon`} className={(`/${ele.routeName}` === location.pathname) ? classes.activeIcon : classes.inactiveIcons} />
                 {/* </ListItemIcon> */}
               </ListItem>
             </Link>
           )
         })}
       </List>
-      <GitHubIcon fontSize='small' onClick={() => onSocialLinkClick('github')} className={classes.gitHubIcon} />
-      <LinkedInIcon fontSize='small' onClick={() => onSocialLinkClick('linkedIn')} className={classes.linkedInIcon} />
+      <GitHubIcon id={'github-icon'} fontSize='small' onClick={() => onSocialLinkClick('github')} className={classes.gitHubIcon} />
+      <LinkedInIcon id='linkedin-icon' fontSize='small' onClick={() => onSocialLinkClick('linkedIn')} className={classes.linkedInIcon} />
     </div>
   )
 }

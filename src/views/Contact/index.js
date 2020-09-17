@@ -132,22 +132,23 @@ const Contacts = (props) => {
   console.log('rerender')
   return (
     <div id='contactDiv' onSubmit={handleSubmit} className={classes.contactDiv}>
-      <Container maxWidth='xs' id='aboutdiv'
+      <Container maxWidth='xs' id='contactLeftSideContainer'
         classes={{
           root: classes.leftRootContainer
         }}
       >
-        <Typography variant='h3' className={classNames(classes.title, classes.titleAnimation)}>
+        <Typography id='titleText' variant='h3' className={classNames(classes.title, classes.titleAnimation)}>
           Contact me
         </Typography>
-        <Typography variant='body2' className={classNames(classes.sentence, classes.paraOneAnimation)}>
+        <Typography id='paraOneText' variant='body2' className={classNames(classes.sentence, classes.paraOneAnimation)}>
           I am always open for new opportunities. If have any questions and want to talk with me, don't hesitate to contact me using the below form.
         </Typography>
-        <form className={classes.form} noValidate>
+        <form id='contactFormContainer' className={classes.form} noValidate>
           <div id='gridContainerDiv' className={classes.griDivContainer}>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={6} className={classes.fieldOne}>
+            <Grid id='mainGrid' container spacing={2}>
+              <Grid id='gridItemOne' item xs={12} sm={6} className={classes.fieldOne}>
                 <TextField
+                  id='nameTextField'
                   classes={{
                     root: classes.textFieldRoot
                   }}
@@ -159,8 +160,9 @@ const Contacts = (props) => {
                   value={name}
                 />
               </Grid>
-              <Grid item xs={12} sm={6} className={classes.fieldTwo}>
+              <Grid id='gridItemTwo' item xs={12} sm={6} className={classes.fieldTwo}>
                 <TextField
+                  id='emailTextField'
                   classes={{
                     root: classes.textFieldRoot
                   }}
@@ -174,8 +176,9 @@ const Contacts = (props) => {
                   value={email}
                 />
               </Grid>
-              <Grid item xs={12} className={classes.fieldThree}>
+              <Grid id='gridItemThree' item xs={12} className={classes.fieldThree}>
                 <TextField
+                  id='subjectTextField'
                   classes={{
                     root: classes.textFieldRoot
                   }}
@@ -187,8 +190,9 @@ const Contacts = (props) => {
                   value={subject}
                 />
               </Grid>
-              <Grid item xs={12} className={classes.fieldFour}>
+              <Grid id='gridItemFour' item xs={12} className={classes.fieldFour}>
                 <TextField
+                  id='messageTextField'
                   classes={{
                     root: classes.textFieldRoot
                   }}
@@ -204,9 +208,10 @@ const Contacts = (props) => {
               </Grid>
             </Grid>
           </div>
-          <div id='submitButtonDiv' className={classes.submitButtonDiv}>
+          <div id='formButtonsDiv' className={classes.formButtonsDiv}>
             <ThemeProvider theme={theme}>
               <Button
+                id='formClearButton'
                 variant='outlined'
                 color='secondary'
                 className={classNames(classes.clearButton, classes.buttonOne)}
@@ -215,6 +220,7 @@ const Contacts = (props) => {
                 Clear
               </Button>
               <Button
+                id='formSubmitButton'
                 type='submit'
                 variant='contained'
                 color='primary'
@@ -227,7 +233,7 @@ const Contacts = (props) => {
         </form>
       </Container>
       {
-        showAnimation && <div id={'contactAnimationDiv'} className={classes.rightContainer}>
+        showAnimation && <div id={'contacRightSideContainer'} className={classes.rightContainer}>
           <TextParticleAnimation
             animationText={'📞'}
             particleColor={'#949699'}
@@ -236,13 +242,14 @@ const Contacts = (props) => {
         </div>
       }
       <Snackbar
+        id='dispatchMessageSnackbar'
         open={openSnack}
         classes={{
           root: classes.snackbarRoot
         }}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         message={
-          <Typography variant='body2' className={classes.snackbarText}>
+          <Typography id='snackbarText' variant='body2' className={classes.snackbarText}>
             Message Dispatched!!!
           </Typography>
         }

@@ -171,13 +171,13 @@ const Animation = (props) => {
     }
   }, [])
   const canvas = <canvas
-    id={'animationCanvas'}
+    id={'textParticleAnimationCanvas'}
     ref={canvasRef}
     data-paper-resize
   />
 
   return (
-    <div ref={viewRef} id={'viewDiv'} style={{ display: 'flex', flex: 1}}>
+    <div ref={viewRef} id={'textParticleAnimationDiv'} style={{ display: 'flex', flex: 1}}>
       {canvas}
     </div>
   )

@@ -7,8 +7,26 @@ import { useHistory } from 'react-router-dom'
 import NeonButton from '../../components/NeonButton'
 
 const useStyles = makeStyles((theme) => ({
+  titleText: {
+    opacity: 0,
+    transform: 'translateY(20px)',
+    animation: '$fadeIn 0.45s ease 0.25s 1 forwards'
+  },
   subtitle: {
-    color: '#949699'
+    color: '#949699',
+    opacity: 0,
+    transform: 'translateY(20px)',
+    animation: '$fadeIn 0.45s ease 0.5s 1 forwards'
+  },
+  '@keyframes fadeIn': {
+    '0%': {
+      opacity: 0,
+      transform: `translateY(20px)`
+    },
+    '100%': {
+      opacity: 1,
+      transform: `translateY(0px)`
+    }
   },
   knowMoreButtonDiv: {
     transform: 'translateY(100%)'
@@ -39,10 +57,10 @@ const Home = (props) => {
   return (
     <div id='homeDiv' className={classes.homeDiv}>
       <Container maxWidth='xs' id='introductionContainer'>
-        <Typography variant='h4'>
+        <Typography id='titleText' variant='h4' className={classes.titleText}>
           Namaste, my name is Shubham
         </Typography>
-        <Typography variant='h6' className={classes.subtitle}>
+        <Typography id='subtitleText' variant='h6' className={classes.subtitle}>
           I am a frontend and backend developer, who loves to create awesome web apps and android apps using react, react native and node
         </Typography>
       </Container>

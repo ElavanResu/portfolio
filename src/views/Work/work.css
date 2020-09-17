@@ -54,7 +54,7 @@
   }
 }
 
-#projectDetailsDiv #shortDesc {
+#projectDetailsDiv #shortDescText {
   margin-top: 32px;
 }
 
@@ -74,7 +74,7 @@
 }
 
 #projectDetailsDiv #aboutDiv #paragraph,
-#projectDetailsDiv #techInfoDiv #techInfoLabel {
+#projectDetailsDiv #techInfoDiv #techInfoLabelText {
   margin-top: 16px;
 }
 
@@ -114,6 +114,6 @@
   color: #949699;
 }
 
-#projectDetailsDiv #metaInfoDiv #heading {
+#projectDetailsDiv #metaInfoDiv #headingText {
   font-weight: bolder;
 }
