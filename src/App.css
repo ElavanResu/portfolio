@@ -56,10 +56,12 @@
   }
 }
 
-#sideNavDivContainer svg {
+#sideNavDivContainer li svg,
+#sideNavDivContainer > svg {
   transition: 0.2s;
 }
 
-#sideNavDivContainer svg:hover {
+#sideNavDivContainer li:hover svg,
+#sideNavDivContainer > svg:hover {
   color: #3EFDD8;
 }
