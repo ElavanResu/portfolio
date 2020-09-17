@@ -25,39 +25,6 @@
   }
 }
 
-/* #neonButtonDiv:after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 15px 30px;
-  z-index: -1;
-  color: #1D1D1D;
-  animation: text-shadow-visible 3.5s ease 1.30s 1;
-}
-
-@keyframes text-shadow-visible {
-  0% {
-    color: #1D1D1D;
-  }
-  100% {
-    color: #3EFDD8;
-  }
-} */
-
-/* #neonButtonDiv:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 50%;
-  width: 50%;
-  background: #05ffcd;
-  z-index: -2;
-  opacity: .3;
-  filter: blur(40px);
-} */
-
 #neonButtonDiv:hover {
   color: #048e73;
   background: #3EFDD8;
@@ -66,20 +33,6 @@
   transition-delay: 0s;
   text-shadow: unset;
 }
-
-/* #neonButtonDiv:hover:after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 15px 30px;
-  z-index: -1;
-  color: #1D1D1D;
-  text-shadow: unset;
-  transition-delay: 0.1s;
-} */
-
-
 
 #neonButtonDiv span {
   position: absolute;

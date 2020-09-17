@@ -2,13 +2,10 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles((theme) => ({
   aboutDiv: {
-    // position: 'relative',
     display: 'flex',
     overflowX: 'hidden',
-    // flexDirection: 'row',
     flex: 1,
     flexWrap: 'wrap'
-    // justifyContent: 'center'
   },
   leftRootContainer: {
     textAlign: 'left',
@@ -23,8 +20,6 @@ const useStyles = makeStyles((theme) => ({
       paddingLeft: theme.spacing(2),
       paddingRight: theme.spacing(2),
       paddingTop: theme.spacing(10),
-      // minHeight: 400,
-      // justifyContent: 'unset',
       marginBottom: theme.spacing(6)
     },
     paddingLeft: theme.spacing(8),
@@ -75,8 +70,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flex: 1,
     [theme.breakpoints.down('sm')]: {
-      minWidth: 250,
-      // maxheight: 100
+      minWidth: 250
     }
   }
 }))

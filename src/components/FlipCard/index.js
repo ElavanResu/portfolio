@@ -1,6 +1,6 @@
 import React from 'react'
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
+import Typography from '@material-ui/core/Typography'
+import { makeStyles } from '@material-ui/core/styles'
 import classNames from 'classnames'
 
 import './flipCard.css'
@@ -15,9 +15,6 @@ const useStyles = makeStyles((theme) => ({
 const FlipCard = (props) => {
   const classes = useStyles()
   const { customClasses } = props
-  // const onCardClick = () => {
-  //   window.open(`${props.githubLink}`, '_blank');
-  // }
   return (
     <div className={classNames('flip-card', customClasses)} style={props.styles}>
       <div className={'front'}
@@ -26,13 +23,13 @@ const FlipCard = (props) => {
         }}
       >
         <div className={'top-label'}>
-          <Typography variant="caption">
+          <Typography variant='caption'>
             {props.title}
           </Typography>
         </div>
         {
           props.inDevelopment && <div className={'bottom-label'}>
-            <Typography variant="caption">
+            <Typography variant='caption'>
               {'In Development'}
             </Typography>
           </div>
@@ -49,7 +46,7 @@ const FlipCard = (props) => {
               if (index < 3) {
                 return (
                   <div className={'tag-label'} key={`${props.id}-tags-${index}`}>
-                    <Typography variant="caption" className={classes.tagText}>
+                    <Typography variant='caption' className={classes.tagText}>
                       {ele}
                     </Typography>
                   </div>
@@ -59,7 +56,7 @@ const FlipCard = (props) => {
             })
           }
           <div className={'tag-label'}>
-            <Typography variant="caption" className={classes.tagText}>
+            <Typography variant='caption' className={classes.tagText}>
               More Details...
             </Typography>
           </div>

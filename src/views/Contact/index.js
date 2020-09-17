@@ -129,30 +129,6 @@ const Contacts = (props) => {
       })
     }
   }
-  // return (
-  //   <div onSubmit={handleSubmit} className={classes.contactDiv}>
-  //     <div
-  //       id='div1'
-  //       style={{
-  //         display: 'flex',
-  //         flex: 1,
-  //         flexDirection: 'column'
-  //       }}>
-  //         <div id='div1'>div1</div>
-  //         <div id='div2'>div2</div>
-  //         <div id='div3'>div3</div>
-  //         <div style={{ position: 'absolute', bottom: '16px'}}id='div4'>div4</div>
-
-  //       </div>
-  //     <div
-  //       style={{
-  //         display: 'flex',
-  //         flex: 1
-  //       }}
-  //       id='div2'
-  //     >div2</div>
-  //   </div>
-  // )
   console.log('rerender')
   return (
     <div id='contactDiv' onSubmit={handleSubmit} className={classes.contactDiv}>
@@ -175,7 +151,6 @@ const Contacts = (props) => {
                   classes={{
                     root: classes.textFieldRoot
                   }}
-                  // autoComplete='name'
                   name='name'
                   fullWidth
                   id='name'
@@ -189,7 +164,6 @@ const Contacts = (props) => {
                   classes={{
                     root: classes.textFieldRoot
                   }}
-                  // autoComplete='email'
                   name='email'
                   required
                   error={errors.findIndex(ele => ele.key === 'email') !== -1}
@@ -205,7 +179,6 @@ const Contacts = (props) => {
                   classes={{
                     root: classes.textFieldRoot
                   }}
-                  // autoComplete='email'
                   name='subject'
                   fullWidth
                   id='subject'
@@ -219,7 +192,6 @@ const Contacts = (props) => {
                   classes={{
                     root: classes.textFieldRoot
                   }}
-                  // autoComplete='email'
                   name='message'
                   required
                   error={errors.findIndex(ele => ele.key === 'message') !== -1}

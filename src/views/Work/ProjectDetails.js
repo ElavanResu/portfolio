@@ -2,7 +2,7 @@ import React from 'react'
 import Typography from '@material-ui/core/Typography'
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
-import GitHubIcon from '@material-ui/icons/GitHub';
+import GitHubIcon from '@material-ui/icons/GitHub'
 import { Link } from 'react-router-dom'
 import classNames from 'classnames'
 
@@ -25,7 +25,7 @@ const ProjectDetails = (props) => {
   console.log('project props:', props)
   const { id, title, shortDescription, about, banner, cardImgUrl, backCardImgUrl, tags, githubLink, inDevelopment} = props
   const goToLink = () => {
-    window.open(githubLink, '_blank');
+    window.open(githubLink, '_blank')
   }
   return (
     <div id='projectDetailsDiv'>

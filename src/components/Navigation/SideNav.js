@@ -1,16 +1,16 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import HomeIcon from "@material-ui/icons/Home";
-import PersonIcon from "@material-ui/icons/Person";
-import WorkIcon from "@material-ui/icons/Work";
-import ImportantDevicesIcon from '@material-ui/icons/ImportantDevices';
-import ContactMailIcon from "@material-ui/icons/ContactMail";
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-// import ListItemIcon from "@material-ui/core/ListItemIcon";
-import { makeStyles } from "@material-ui/core/styles";
+import HomeIcon from '@material-ui/icons/Home'
+import PersonIcon from '@material-ui/icons/Person'
+import WorkIcon from '@material-ui/icons/Work'
+import ImportantDevicesIcon from '@material-ui/icons/ImportantDevices'
+import ContactMailIcon from '@material-ui/icons/ContactMail'
+import LinkedInIcon from '@material-ui/icons/LinkedIn'
+import GitHubIcon from '@material-ui/icons/GitHub'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import { makeStyles } from '@material-ui/core/styles'
+
 import Logo from '../Logo'
 
 const useStyles = makeStyles((theme) => ({
@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 'auto',
     cursor: 'pointer'
   }
-}));
+}))
 
 const IconMapper = {
   'home': HomeIcon,
@@ -73,7 +73,7 @@ const socialLink = {
 
 const SideNav = (props) => {
   const onSocialLinkClick = (key) => {
-    window.open(socialLink[key], '_blank');
+    window.open(socialLink[key], '_blank')
   }
   const { navBarRoutes, handleDrawerToggle, showLogo } = props
   const location = useLocation()

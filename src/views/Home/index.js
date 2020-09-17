@@ -3,6 +3,7 @@ import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import { useHistory } from 'react-router-dom'
+
 import NeonButton from '../../components/NeonButton'
 
 const useStyles = makeStyles((theme) => ({
@@ -11,10 +12,6 @@ const useStyles = makeStyles((theme) => ({
   },
   knowMoreButtonDiv: {
     transform: 'translateY(100%)'
-    // position: 'absolute',
-    // bottom: theme.spacing(-10),
-    // left: 'auto',
-    // right: 'auto'
   },
   homeDiv: {
     display: 'flex',

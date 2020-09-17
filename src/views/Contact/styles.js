@@ -130,8 +130,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flex: 1,
     [theme.breakpoints.down('sm')]: {
-      minWidth: 250,
-      // maxheight: 100
+      minWidth: 250
     }
   },
   clearButton: {
