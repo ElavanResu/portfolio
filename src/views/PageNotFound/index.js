@@ -10,8 +10,8 @@ const PageNotFound = (props) => {
       <span content='403' id='notFoundText' class={classNames(classes.notFoundText, classes.errorCodeText)}>
         403
       </span>
-      <span content='There is nothing here to see!!!' id='notFoundText' class={classNames(classes.notFoundText, classes.errorCodeMessage)}>
-        There is nothing here to see!!!
+      <span content='Nothing here to see!!!' id='notFoundText' class={classNames(classes.notFoundText, classes.errorCodeMessage)}>
+        Nothing here to see!!!
       </span>
     </div>
   )  

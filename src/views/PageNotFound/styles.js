@@ -3,7 +3,8 @@ import { makeStyles } from '@material-ui/core/styles'
 const useStyles = makeStyles((theme) => ({
   pageNotFoundContainer: {
     display: 'grid',
-    margin: 'auto'
+    margin: 'auto',
+    overflow: 'hidden'
   },
   errorCodeText: {
     color: '#949699',
