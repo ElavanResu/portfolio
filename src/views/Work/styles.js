@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles'
+
 import { navBarRoutes } from '../../Routes'
 
 const useStyles = makeStyles((theme) => {

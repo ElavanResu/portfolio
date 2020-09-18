@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 
 import Logo from '../Logo'
 import NavBar from './NavBar'
+import PageNotFound from '../../views/PageNotFound'
 
 const drawerWidth = 56
 
@@ -117,6 +118,9 @@ function ResponsiveDrawer(props) {
           {childRoutes}
           <Route id='rootPathAnchor' exact path='/'>
             <Redirect to='/home' />
+          </Route>
+          <Route id='unMatchedRoute' path='*'>
+            <PageNotFound />
           </Route>
         </Switch>
       </div>
