@@ -6,15 +6,11 @@ const useStyles = makeStyles((theme) => ({
     margin: 'auto'
   },
   errorCodeText: {
-    color: 'white',
+    color: '#949699',
     fontSize: 70
   },
   errorCodeMessage: {
-    color: 'white',
-    fontSize: 70
-  },
-  errorCodeExtraContent: {
-    color: 'white',
+    color: '#949699',
     fontSize: 30
   },
   notFoundText: {
