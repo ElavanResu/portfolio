@@ -27,17 +27,6 @@ const Loading = (props) => {
   // create draw function for your animation unit, this
   // will draw the animation unit on canvas
   Particles.prototype.draw = function (lastPos) {
-    // this.context.beginPath()
-    // this.context.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false)
-    // this.context.fillStyle = this.color
-    // this.context.fill()
-    // this.context.beginPath()
-    // this.context.strokeStyle = this.color
-    // this.context.lineWidth = this.radius
-    // this.context.moveTo(this.initialPos.x, this.initialPos.y)
-    // this.context.lineTo(this.x, this.y)
-    // this.context.stroke()
-    // this.context.closePath()
     this.context.beginPath()
     this.context.strokeStyle = this.color
     this.context.lineWidth = this.radius
@@ -67,7 +56,7 @@ const Loading = (props) => {
 
   const init = (context, canvas) => {
     // clear the canvas
-    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.clearRect(0, 0, canvas.width, canvas.height)
 
     // get the new canvas size
     ww = canvas.width

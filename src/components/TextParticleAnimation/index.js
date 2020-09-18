@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from 'react'
+
 const randomIntFromRange = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
 const Animation = (props) => {
+  const { animationText, particleColor, delay } = props
   console.log('Render animation')
   const canvasRef = useRef(null)
   let viewRef = useRef(null)
@@ -83,7 +85,7 @@ const Animation = (props) => {
     context.textAlign = 'center'
     context.textBaseline = 'middle'
     // context.scale(-1, 1)
-    context.fillText(props.animationText, ww/2, wh/2)
+    context.fillText(animationText, ww/2, (wh/2 + (10/100) * wh/2))
 
 
     const data  = context.getImageData(0, 0, ww, wh).data
@@ -99,7 +101,7 @@ const Animation = (props) => {
           const dx = randomIntFromRange(-4, 4)
           const dy = randomIntFromRange(-4, 4)
           const radius = randomIntFromRange(1, 1)
-          particles.push(new Particle(context, canvas, x, y, dx, dy, radius, props.particleColor))
+          particles.push(new Particle(context, canvas, x, y, dx, dy, radius, particleColor))
         }
       }
     }
@@ -160,20 +162,22 @@ const Animation = (props) => {
       })
     }
 
-    render()
+    setTimeout(() => {
+      render()
+    }, delay)
 
     return () => {
       window.cancelAnimationFrame(animationFrameId)
     }
   }, [])
   const canvas = <canvas
-    id={'animationCanvas'}
+    id={'textParticleAnimationCanvas'}
     ref={canvasRef}
     data-paper-resize
   />
 
   return (
-    <div ref={viewRef} id={'viewDiv'} style={{ display: 'flex', flex: 1}}>
+    <div ref={viewRef} id={'textParticleAnimationDiv'} style={{ display: 'flex', flex: 1}}>
       {canvas}
     </div>
   )

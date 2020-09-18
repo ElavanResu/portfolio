@@ -1,0 +1,119 @@
+#projectDetailsDiv {
+  max-width: 1010px;
+  margin: 80px auto 50px auto;
+  text-align: left;
+}
+
+@media (max-width: 1600px) {
+  #projectDetailsDiv {
+    max-width: 880px;
+  }
+}
+
+@media (max-width: 1440px) {
+  #projectDetailsDiv {
+    max-width: 800px;
+  }
+}
+
+@media (max-width: 1440px) {
+  #projectDetailsDiv {
+    max-width: 800px;
+  }
+}
+
+@media (max-width: 1300px) {
+  #projectDetailsDiv {
+    max-width: 760px;
+  }
+}
+
+@media (max-width: 1100px) {
+  #projectDetailsDiv {
+    max-width: 700px;
+  }
+}
+
+@media (max-width: 900px) {
+  #projectDetailsDiv {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 900px) {
+  #projectDetailsDiv {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 800px) {
+  #projectDetailsDiv {
+    max-width: 500px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+#projectDetailsDiv #shortDescText {
+  margin-top: 32px;
+}
+
+#projectDetailsDiv #firstLevelInfo,
+#projectDetailsDiv #image,
+#projectDetailsDiv #aboutDiv,
+#projectDetailsDiv #techInfoDiv {
+  margin-top: 32px;
+}
+
+#projectDetailsDiv #image {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+#projectDetailsDiv #aboutDiv #paragraph,
+#projectDetailsDiv #techInfoDiv #techInfoLabelText {
+  margin-top: 16px;
+}
+
+#projectDetailsDiv hr,
+#techInfoDiv hr {
+  background-color: #484848;
+  margin: 16px auto 0 0;
+  width: 50%;
+  height: 1px;
+  border: 0
+}
+
+@media (max-width: 800px) {
+  #projectDetailsDiv hr,
+  #techInfoDiv hr {
+    width: 100%;
+  }
+}
+
+#projectDetailsDiv #techInfoDiv ul {
+  list-style-type: circle;
+  color: #949699;
+  padding: 0 22px 0 22px;
+}
+
+#projectDetailsDiv .title {
+  color: #3EFDD8;
+}
+
+#projectDetailsDiv .subtitle {
+  color: #949699;
+}
+
+#projectDetailsDiv #metaInfoDiv {
+  margin-top: 64px;
+  text-align: center;
+  color: #949699;
+}
+
+#projectDetailsDiv #metaInfoDiv #headingText {
+  font-weight: bolder;
+}

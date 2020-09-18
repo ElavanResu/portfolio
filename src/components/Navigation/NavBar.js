@@ -1,15 +1,16 @@
 import React from 'react'
-import Drawer from "@material-ui/core/Drawer";
+import Drawer from '@material-ui/core/Drawer'
+import Hidden from '@material-ui/core/Hidden'
+import { makeStyles } from '@material-ui/core/styles'
+
 import SideNav from './SideNav'
-import Hidden from "@material-ui/core/Hidden";
-import { makeStyles } from "@material-ui/core/styles";
 
 const NavBar = (props) => {
   const { mobileOpen, handleDrawerToggle, navBarRoutes, drawerWidth } = props
 
   const useStyles = makeStyles((theme) => ({
     drawer: {
-      [theme.breakpoints.up("xs")]: {
+      [theme.breakpoints.up('xs')]: {
         width: drawerWidth,
         flexShrink: 0
       }
@@ -29,13 +30,14 @@ const NavBar = (props) => {
     },
   }))
 
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
-    <nav className={classes.drawer} aria-label="mailbox folders">
-      <Hidden smUp implementation="css">
+    <nav id='navTag' className={classes.drawer} aria-label='mailbox folders'>
+      <Hidden smUp implementation='css'>
         <Drawer
-          variant="temporary"
+          id='drawerMenuMobile'
+          variant='temporary'
           anchor={'right'}
           open={mobileOpen}
           onClose={handleDrawerToggle}
@@ -52,14 +54,14 @@ const NavBar = (props) => {
           />
         </Drawer>
       </Hidden>
-      <Hidden xsDown implementation="css">
+      <Hidden xsDown implementation='css'>
         <Drawer
           id={'drawerMenuWeb'}
           classes={{
             paper: classes.drawerPaper,
             paperAnchorDockedLeft: classes.paperAnchorDockedLeft
           }}
-          variant="permanent"
+          variant='permanent'
           open
         >
           <SideNav

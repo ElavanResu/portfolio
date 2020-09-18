@@ -1,56 +1,42 @@
-import React from "react";
-import AppBar from "@material-ui/core/AppBar";
-// import CssBaseline from "@material-ui/core/CssBaseline";
-// import Divider from "@material-ui/core/Divider";
-import Hidden from "@material-ui/core/Hidden";
-import IconButton from "@material-ui/core/IconButton";
-// import InboxIcon from "@material-ui/icons/MoveToInbox";
-// import ListItemText from "@material-ui/core/ListItemText";
-// import MailIcon from "@material-ui/icons/Mail";
-import MenuIcon from "@material-ui/icons/Menu";
-import Toolbar from "@material-ui/core/Toolbar";
-// import Typography from "@material-ui/core/Typography";
-import { makeStyles, createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import React from 'react'
+import AppBar from '@material-ui/core/AppBar'
+import Hidden from '@material-ui/core/Hidden'
+import IconButton from '@material-ui/core/IconButton'
+import MenuIcon from '@material-ui/icons/Menu'
+import Toolbar from '@material-ui/core/Toolbar'
+import { makeStyles } from '@material-ui/core/styles'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+
 import Logo from '../Logo'
-
 import NavBar from './NavBar'
-import ProjectDetails from "../../views/Work/ProjectDetails";
+import PageNotFound from '../../views/PageNotFound'
 
-let customTheme = createMuiTheme()
-
-const drawerWidth = 56;
+const drawerWidth = 56
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: "flex",
+    display: 'flex',
     flexDirection: 'column',
     minHeight: '100vh',
     width: `calc(100% - ${drawerWidth}px)`,
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down('xs')]: {
       width: `calc(100% - 0px)`
     },
     flex: 1
   },
   appBar: {
     backgroundColor: '#181818'
-    // width: `calc(100% - ${drawerWidth}px)`,
-    //   marginLeft: drawerWidth
   },
   toolbar: {
     ...theme.mixins.toolbar,
     [theme.breakpoints.down('sm')]: {
-      paddingLeft: 0
+      paddingLeft: 0,
+      justifyContent: 'space-between'
     }
   },
   menuButton: {
-    // marginRight: theme.spacing(2),
-    [theme.breakpoints.up("sm")]: {
-      display: "none"
-    },
-    [theme.breakpoints.down('sm')]: {
-      flexGrow: 1,
-      justifyContent: 'flex-end'
+    [theme.breakpoints.up('sm')]: {
+      display: 'none'
     }
   },
   // necessary for content to be below app bar
@@ -58,7 +44,6 @@ const useStyles = makeStyles((theme) => ({
     color: '#949699'
   },
   content: {
-    // flexGrow: 1,
     padding: theme.spacing(3)
   },
   listItem: {
@@ -69,17 +54,16 @@ const useStyles = makeStyles((theme) => ({
     height: 56,
     width: 56
   }
-}));
+}))
 
 function ResponsiveDrawer(props) {
-  const { navBarRoutes } = props;
-  const classes = useStyles();
-  // const theme = useTheme();
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const { navBarRoutes } = props
+  const classes = useStyles()
+  const [mobileOpen, setMobileOpen] = React.useState(false)
 
   const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
+    setMobileOpen(!mobileOpen)
+  }
   let childRoutes = []
   let parentRoutes = navBarRoutes.map(ele => {
     const Component = ele.component
@@ -90,7 +74,7 @@ function ResponsiveDrawer(props) {
       let cRoutes = ele.children.map(child => {
         const ChildComponent = child.component
         return (
-          <Route path={`/${ele.routeName}/${child.routeName}`} key={`route-${ele.routeName}-${child.routeName}`}>
+          <Route id={`${ele.routeName}-${child.routeName}-route-anchor`} path={`/${ele.routeName}/${child.routeName}`} key={`route-${ele.routeName}-${child.routeName}`}>
             <ChildComponent {...child.childProps} />
           </Route>
         )
@@ -98,7 +82,7 @@ function ResponsiveDrawer(props) {
       childRoutes = [...childRoutes, ...cRoutes]
     }
     return (
-      <Route exact={exact} path={`/${ele.routeName}`} key={`route-${ele.routeName}`}>
+      <Route id={`${ele.routeName}-route-anchor`} exact={exact} path={`/${ele.routeName}`} key={`route-${ele.routeName}`}>
         <Component children={ele.children} />
       </Route>
     )
@@ -106,19 +90,19 @@ function ResponsiveDrawer(props) {
   return (
     <Router>
       <div id='navigationRootDiv' className={classes.root}>
-        {/* <CssBaseline /> */}
-        <Hidden smUp implementation="css">
-          <AppBar position="fixed" className={classes.appBar}>
-            <Toolbar className={classes.toolbar}>
-              <div className={classes.title}><Logo /></div>
+        <Hidden smUp implementation='css'>
+          <AppBar id='appBar' position='fixed' className={classes.appBar}>
+            <Toolbar id='toolBar' className={classes.toolbar}>
+              <div id='mobileLogoDiv' className={classes.title}><Logo /></div>
               <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                edge="end"
+                id='menuIconButton'
+                color='inherit'
+                aria-label='open drawer'
+                edge='end'
                 onClick={handleDrawerToggle}
                 className={classes.menuButton}
               >
-                <MenuIcon />
+                <MenuIcon id='menuIcon' />
               </IconButton>
             </Toolbar>
           </AppBar>
@@ -132,13 +116,16 @@ function ResponsiveDrawer(props) {
         <Switch>
           {parentRoutes}
           {childRoutes}
-          <Route exact path="/">
+          <Route id='rootPathAnchor' exact path='/'>
             <Redirect to='/home' />
+          </Route>
+          <Route id='unMatchedRoute' path='*'>
+            <PageNotFound />
           </Route>
         </Switch>
       </div>
     </Router>
-  );
+  )
 }
 
-export default ResponsiveDrawer;
+export default ResponsiveDrawer

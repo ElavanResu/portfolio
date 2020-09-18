@@ -5,100 +5,11 @@ import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import Snackbar from '@material-ui/core/Snackbar'
-import { makeStyles, ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
-import TextParticleAnimation from '../../components/TextParticleAnimation'
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import classNames from 'classnames'
 
-const useStyles = makeStyles((theme) => ({
-  contactDiv: {
-    display: 'flex',
-    overflow: 'hidden',
-    flex: 1,
-  },
-  leftRootContainer: {
-    textAlign: 'left',
-    [theme.breakpoints.up('sm')]: {
-      justifyContent: 'center'
-    },
-    marginLeft: 0,
-    marginRight: 0,
-    [theme.breakpoints.down('xs')]: {
-      paddingLeft: theme.spacing(2),
-      paddingRight: theme.spacing(2),
-      paddingTop: theme.spacing(10),
-    },
-    display: 'flex',
-    flexDirection: 'column',
-    paddingLeft: theme.spacing(8),
-    paddingRight: theme.spacing(0)
-  },
-  title: {
-    marginBottom: theme.spacing(4),
-    color: '#3EFDD8'
-  },
-  sentence: {
-    color: '#949699',
-  },
-  snackbarText: {
-    color: '#3EFDD8',
-    textAlign: 'center'
-  },
-  form: {
-    marginTop: theme.spacing(3),
-    [theme.breakpoints.down('xs')]: {
-      flex: 1,
-      display: 'flex',
-      flexDirection: 'column'
-    }
-  },
-  textFieldRoot: {
-    '& .MuiInputBase-root': {
-      color: '#949699',
-    },
-    '& .MuiInput-underline:before': {
-      borderBottomColor: '#949699',
-      borderBottomWidth: '2px'
-    },
-    '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
-      borderBottomColor: '#949699',
-      borderBottomWidth: '2px'
-    },
-    '& .Mui-error:after': {
-      borderBottomColor: '#f44336 !important'
-    },
-    '& .MuiInput-underline:after': {
-      borderBottomColor: '#3EFDD8'
-    },
-    '& .Mui-focused:not(.Mui-error)': {
-      color: '#3EFDD8'
-    },
-    '& .MuiFormLabel-root:not(.Mui-focused):not(.Mui-error)': {
-      color: '#949699'
-    }
-  },
-  submitButtonDiv: {
-    marginTop: theme.spacing(6),
-    marginBottom: theme.spacing(2)
-  },
-  snackbarRoot: {
-    '& .MuiSnackbarContent-root': {
-      justifyContent: 'center'
-    }
-  },
-  rightContainer: {
-    display: 'flex',
-    flex: 1,
-    [theme.breakpoints.down('sm')]: {
-      minWidth: 250,
-      // maxheight: 100
-    }
-  },
-  clearButton: {
-    marginRight: theme.spacing(1)
-  },
-  griDivContainer: {
-    flex: 1
-  }
-}))
+import TextParticleAnimation from '../../components/TextParticleAnimation'
+import useStyles from './styles'
 
 const theme = createMuiTheme({
   palette: {
@@ -218,53 +129,29 @@ const Contacts = (props) => {
       })
     }
   }
-  // return (
-  //   <div onSubmit={handleSubmit} className={classes.contactDiv}>
-  //     <div
-  //       id='div1'
-  //       style={{
-  //         display: 'flex',
-  //         flex: 1,
-  //         flexDirection: 'column'
-  //       }}>
-  //         <div id='div1'>div1</div>
-  //         <div id='div2'>div2</div>
-  //         <div id='div3'>div3</div>
-  //         <div style={{ position: 'absolute', bottom: '16px'}}id='div4'>div4</div>
-
-  //       </div>
-  //     <div
-  //       style={{
-  //         display: 'flex',
-  //         flex: 1
-  //       }}
-  //       id='div2'
-  //     >div2</div>
-  //   </div>
-  // )
   console.log('rerender')
   return (
     <div id='contactDiv' onSubmit={handleSubmit} className={classes.contactDiv}>
-      <Container maxWidth='xs' id='aboutdiv'
+      <Container maxWidth='xs' id='contactLeftSideContainer'
         classes={{
           root: classes.leftRootContainer
         }}
       >
-        <Typography variant='h3' className={classes.title}>
+        <Typography id='titleText' variant='h3' className={classNames(classes.title, classes.titleAnimation)}>
           Contact me
         </Typography>
-        <Typography variant='body2' className={classes.sentence}>
+        <Typography id='paraOneText' variant='body2' className={classNames(classes.sentence, classes.paraOneAnimation)}>
           I am always open for new opportunities. If have any questions and want to talk with me, don't hesitate to contact me using the below form.
         </Typography>
-        <form className={classes.form} noValidate>
+        <form id='contactFormContainer' className={classes.form} noValidate>
           <div id='gridContainerDiv' className={classes.griDivContainer}>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+            <Grid id='mainGrid' container spacing={2}>
+              <Grid id='gridItemOne' item xs={12} sm={6} className={classes.fieldOne}>
                 <TextField
+                  id='nameTextField'
                   classes={{
                     root: classes.textFieldRoot
                   }}
-                  // autoComplete='name'
                   name='name'
                   fullWidth
                   id='name'
@@ -273,12 +160,12 @@ const Contacts = (props) => {
                   value={name}
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid id='gridItemTwo' item xs={12} sm={6} className={classes.fieldTwo}>
                 <TextField
+                  id='emailTextField'
                   classes={{
                     root: classes.textFieldRoot
                   }}
-                  // autoComplete='email'
                   name='email'
                   required
                   error={errors.findIndex(ele => ele.key === 'email') !== -1}
@@ -289,12 +176,12 @@ const Contacts = (props) => {
                   value={email}
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid id='gridItemThree' item xs={12} className={classes.fieldThree}>
                 <TextField
+                  id='subjectTextField'
                   classes={{
                     root: classes.textFieldRoot
                   }}
-                  // autoComplete='email'
                   name='subject'
                   fullWidth
                   id='subject'
@@ -303,12 +190,12 @@ const Contacts = (props) => {
                   value={subject}
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid id='gridItemFour' item xs={12} className={classes.fieldFour}>
                 <TextField
+                  id='messageTextField'
                   classes={{
                     root: classes.textFieldRoot
                   }}
-                  // autoComplete='email'
                   name='message'
                   required
                   error={errors.findIndex(ele => ele.key === 'message') !== -1}
@@ -321,20 +208,23 @@ const Contacts = (props) => {
               </Grid>
             </Grid>
           </div>
-          <div id='submitButtonDiv' className={classes.submitButtonDiv}>
+          <div id='formButtonsDiv' className={classes.formButtonsDiv}>
             <ThemeProvider theme={theme}>
               <Button
+                id='formClearButton'
                 variant='outlined'
                 color='secondary'
-                className={classes.clearButton}
+                className={classNames(classes.clearButton, classes.buttonOne)}
                 onClick={onClear}
               >
                 Clear
               </Button>
               <Button
+                id='formSubmitButton'
                 type='submit'
                 variant='contained'
                 color='primary'
+                className={classes.buttonTwo}
               >
                 Dispatch
               </Button>
@@ -343,21 +233,23 @@ const Contacts = (props) => {
         </form>
       </Container>
       {
-        showAnimation && <div id={'contactAnimationDiv'} className={classes.rightContainer}>
+        showAnimation && <div id={'contacRightSideContainer'} className={classes.rightContainer}>
           <TextParticleAnimation
             animationText={'📞'}
             particleColor={'#949699'}
+            delay={1200}
           /> 
         </div>
       }
       <Snackbar
+        id='dispatchMessageSnackbar'
         open={openSnack}
         classes={{
           root: classes.snackbarRoot
         }}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         message={
-          <Typography variant='body2' className={classes.snackbarText}>
+          <Typography id='snackbarText' variant='body2' className={classes.snackbarText}>
             Message Dispatched!!!
           </Typography>
         }

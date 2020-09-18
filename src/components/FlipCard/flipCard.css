@@ -75,25 +75,6 @@
   margin: 8px;
 }
 
-/* .flip-card .back .cover .button {
-  height:50px;
-  width:50px;
-  background:red;
-  margin-bottom:5px;
-} */
-
-/* .flip-card:hover .back .cover .button,
-.flip-card:focus-within .back .cover .button {
-  animation:bounce 0.2s 5;
-} */
-
-/* @keyframes bounce {
-  0%       { margin-bottom:5px; }
-  25%, 75% { margin-bottom:10px; }
-  50%      { margin-bottom:15px; }
-  100%     { margin-bottom:0; }
-} */
-
 .flip-card:hover .back,
 .flip-card:focus-within .back {
   transform: rotateY(360deg) scale(1);

@@ -1,18 +1,25 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import HomeIcon from "@material-ui/icons/Home";
-import PersonIcon from "@material-ui/icons/Person";
-import WorkIcon from "@material-ui/icons/Work";
-import SettingsIcon from "@material-ui/icons/Settings";
-import ContactMailIcon from "@material-ui/icons/ContactMail";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-// import ListItemIcon from "@material-ui/core/ListItemIcon";
-import { makeStyles } from "@material-ui/core/styles";
+import HomeIcon from '@material-ui/icons/Home'
+import PersonIcon from '@material-ui/icons/Person'
+import WorkIcon from '@material-ui/icons/Work'
+import ImportantDevicesIcon from '@material-ui/icons/ImportantDevices'
+import ContactMailIcon from '@material-ui/icons/ContactMail'
+import LinkedInIcon from '@material-ui/icons/LinkedIn'
+import GitHubIcon from '@material-ui/icons/GitHub'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import { makeStyles } from '@material-ui/core/styles'
+
 import Logo from '../Logo'
 
 const useStyles = makeStyles((theme) => ({
-  // toolbar: theme.mixins.toolbar,
+  navBarDiv: {
+    display: 'flex',
+    flexDirection: 'column',
+    flexGrow: 1,
+    alignItems: 'center'
+  },
   inactiveIcons: {
     color: '#949699'
   },
@@ -31,40 +38,67 @@ const useStyles = makeStyles((theme) => ({
   },
   logo: {
     color: 'white !important'
+  },
+  linkedInIcon: {
+    color: '#949699',
+    cursor: 'pointer',
+    paddingLeft: 24,
+    paddingRight: 24,
+    paddingTop: 8,
+    paddingBottom: 24
+  },
+  gitHubIcon: {
+    color: '#949699',
+    paddingLeft: 24,
+    paddingRight: 24,
+    paddingTop: 8,
+    paddingBottom: 8,
+    marginTop: 'auto',
+    cursor: 'pointer'
   }
-}));
+}))
 
 const IconMapper = {
   'home': HomeIcon,
   'about': PersonIcon,
-  'skills': SettingsIcon,
+  'skills': ImportantDevicesIcon,
   'work': WorkIcon,
   'contact': ContactMailIcon
 }
 
+const socialLink = {
+  linkedIn: 'https://www.linkedin.com/in/shubhamnavale',
+  github: 'https://github.com/ElavanResu'
+}
+
 const SideNav = (props) => {
+  const onSocialLinkClick = (key) => {
+    window.open(socialLink[key], '_blank')
+  }
   const { navBarRoutes, handleDrawerToggle, showLogo } = props
   const location = useLocation()
   console.log('location: ', location)
   const classes = useStyles()
   return (
-    <div className={classes.toolbar}>
-      {showLogo && <div className={classes.logoContainer}><Logo /></div>}
+    <div id={'sideNavDivContainer'} className={classes.navBarDiv}>
+      {showLogo && <div id='logoDiv' className={classes.logoContainer}><Logo /></div>}
       {/* <Divider /> */}
-      <List id={'navBarListContainer'}>
+      <List id={'sideNavListContainer'}>
         {navBarRoutes.map((ele, index) => {
           const IconType = IconMapper[ele.iconName]
           return (
-            <Link key={`link-${ele.routeName}`} to={`/${ele.routeName}`} className={classes.link} onClick={handleDrawerToggle}>
-              <ListItem className={classes.listItem} key={ele.routeName}>
+            <Link id={`nav-bar-link-${ele.routeName}`} key={`link-${ele.routeName}`} to={`/${ele.routeName}`} onClick={handleDrawerToggle}>
+              <ListItem id={`ListItem-${ele.routeName}`} className={classes.listItem} key={ele.routeName}>
                 {/* <ListItemIcon> */}
-                  <IconType className={(`/${ele.routeName}` === location.pathname) ? classes.activeIcon : classes.inactiveIcons} />
+                  <IconType id={`${ele.routeName}-icon`} className={(`/${ele.routeName}` === location.pathname) ? classes.activeIcon : classes.inactiveIcons} />
                 {/* </ListItemIcon> */}
               </ListItem>
             </Link>
           )
         })}
       </List>
+      <GitHubIcon id={'github-icon'} fontSize='small' onClick={() => onSocialLinkClick('github')} className={classes.gitHubIcon} />
+      <LinkedInIcon id='linkedin-icon' fontSize='small' onClick={() => onSocialLinkClick('linkedIn')} className={classes.linkedInIcon} />
     </div>
   )
 }

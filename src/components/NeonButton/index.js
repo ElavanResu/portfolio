@@ -1,14 +1,15 @@
 import React from 'react'
+
 import './index.css'
 
 const NeonButton = (props) => {
   const { text, onClick } = props
   return (
-    <div data-text={`${text}`} id='neonButtonDiv' onClick={onClick}>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
+    <div id='neonButtonDiv' data-text={`${text}`} onClick={onClick}>
+      <span id='beamOne'></span>
+      <span id='beamTwo'></span>
+      <span id='beamThree'></span>
+      <span id='beamFour'></span>
         {text}
     </div>
   )
